@@ -16,6 +16,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   #animation
   animated_text_kit: ^4.2.2
+  #image
+  image_picker: ^0.8.6+1
+
 
 dev_dependencies:
   flutter_test:
