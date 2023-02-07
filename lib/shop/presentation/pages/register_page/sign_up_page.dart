@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shop_app/shop/presentation/pages/register_page/register_widgets/camera_choice_widget.dart';
@@ -22,6 +23,7 @@ class _SignUpPageState extends State<SignUpPage> {
   String? _email;
   String? _password;
   bool isVisible = true;
+  bool processing = false;
   final ImagePicker _picker = ImagePicker();
   XFile? _imageFile;
   dynamic _pickedImageError;
@@ -46,13 +48,34 @@ class _SignUpPageState extends State<SignUpPage> {
     }
   }
 
-  void snackBar() {
+  void _pickImageFromGallery() async {
+    try {
+      final _pickedImage = await _picker.pickImage(
+        source: ImageSource.gallery,
+        maxHeight: 300,
+        maxWidth: 300,
+        imageQuality: 95,
+      );
+
+      setState(() {
+        _imageFile = _pickedImage;
+      });
+    } catch (e) {
+      setState(() {
+        _pickedImageError = e;
+      });
+
+      log('image error $_pickedImageError');
+    }
+  }
+
+  void snackBar(String text) {
     _scaffoldKey.currentState!.showSnackBar(
       SnackBar(
-        duration: Duration(seconds: 2),
+        duration: Duration(seconds: 4),
         backgroundColor: Colors.yellow,
         content: Text(
-          'Not Valid',
+          text,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 25,
@@ -61,6 +84,53 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
       ),
     );
+  }
+
+  void signUp() async {
+    setState(() {
+      processing = true;
+    });
+    if (_formKey.currentState!.validate()) {
+      if (_imageFile != null) {
+        try {
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: _email!,
+            password: _password!,
+          );
+          Navigator.pushReplacementNamed(context, '/home_page');
+        } on FirebaseAuthException catch (e) {
+          if (e.code == 'weak-password') {
+            setState(() {
+              processing = false;
+            });
+            snackBar('The password provided is too weak.');
+            log('The password provided is too weak.');
+          } else if (e.code == 'email-already-in-use') {
+            setState(() {
+              processing = false;
+            });
+            snackBar('The account already exists for that email.');
+            log('The account already exists for that email.');
+          }
+        } catch (e) {
+          setState(() {
+            processing = false;
+          });
+          snackBar('$e');
+          log('$e');
+        }
+      } else {
+        setState(() {
+          _imageFile = null;
+        });
+        snackBar('Please pick an image');
+      }
+    } else {
+      setState(() {
+        processing = false;
+      });
+      snackBar('Please fill your blank');
+    }
   }
 
   @override
@@ -126,7 +196,9 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                             CameraChoiceWidget(
                               icon: Icons.photo,
-                              onTap: () {},
+                              onTap: () {
+                                _pickImageFromGallery();
+                              },
                               radiusOnly: BorderRadius.only(
                                 bottomLeft: Radius.circular(16),
                                 bottomRight: Radius.circular(16),
@@ -282,38 +354,36 @@ class _SignUpPageState extends State<SignUpPage> {
                   SizedBox(
                     height: 20,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      if (_formKey.currentState!.validate()) {
-                        log('Valid');
-                        log(_name!);
-                        log(_email!);
-                        log(_password!);
-                      } else {
-                        log('Not valid');
-                        snackBar();
-                      }
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.purple,
-                          borderRadius: BorderRadius.circular(30)),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 150,
-                          vertical: 15,
-                        ),
-                        child: Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                  processing == true
+                      ? Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.purple,
                           ),
-                        ),
-                      ),
-                    ),
-                  )
+                        )
+                      : GestureDetector(
+                          onTap: () {
+                            signUp();
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.purple,
+                                borderRadius: BorderRadius.circular(30)),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 150,
+                                vertical: 15,
+                              ),
+                              child: Text(
+                                'Sign Up',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
                 ],
               ),
             ),

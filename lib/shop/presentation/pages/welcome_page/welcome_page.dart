@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/shop/presentation/pages/welcome_page/welcome_widgets/google_facebook_guest_widget.dart';
 import 'package:shop_app/shop/presentation/pages/welcome_page/welcome_widgets/log_sign_widget.dart';
@@ -12,6 +13,8 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
+  late String email;
+  late String password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,7 +130,10 @@ class _WelcomePageState extends State<WelcomePage> {
                           ),
                           LogSignWidget(
                             title: 'Sign Up',
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pushReplacementNamed(
+                                  context, '/signup_page');
+                            },
                           ),
                           SizedBox(
                             height: 45,
@@ -159,7 +165,22 @@ class _WelcomePageState extends State<WelcomePage> {
                         title: 'Guest',
                         color: Color(0xff3DC5FB),
                         icon: Icons.person,
-                        onTap: () {}),
+                        onTap: () async {
+                          try {
+                            final userCredential =
+                                await FirebaseAuth.instance.signInAnonymously();
+                            print("Signed in with temporary account.");
+                          } on FirebaseAuthException catch (e) {
+                            switch (e.code) {
+                              case "operation-not-allowed":
+                                print(
+                                    "Anonymous auth hasn't been enabled for this project.");
+                                break;
+                              default:
+                                print("Unknown error.");
+                            }
+                          }
+                        }),
                   ],
                 ),
               )

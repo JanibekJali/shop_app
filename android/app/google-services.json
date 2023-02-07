@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1051803193051",
+    "project_id": "kurs-shop-app",
+    "storage_bucket": "kurs-shop-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051803193051:android:fcfd419465b0c445a2c6fe",
+        "android_client_info": {
+          "package_name": "com.example.shop_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051803193051-0u5i7dkho09k54gvdht4rs2qjfoc14tj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shop_app",
+            "certificate_hash": "d44ffedca0e11d9e4cd49a2209a58a93dcbfbdd4"
+          }
+        },
+        {
+          "client_id": "1051803193051-errv62l74aeq67v6q155859o82qmjkbj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoo68Y80XXRoPmUme5357rBDqiiI4OI9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051803193051-errv62l74aeq67v6q155859o82qmjkbj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
