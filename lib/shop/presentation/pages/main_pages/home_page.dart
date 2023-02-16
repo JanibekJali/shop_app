@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:shop_app/shop/presentation/widgets/app_bar/search_widget.dart';
 import 'package:shop_app/shop/presentation/widgets/tab_bar_widgets/repeated_tab_bar_widget.dart';
@@ -12,14 +10,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
-  final List<Widget> _tabs = [
-    const Center(child: Text('Home Screen')),
-    const Center(child: Text('Category Screen')),
-    const Center(child: Text('Stores Screen')),
-    const Center(child: Text('Cart Screen')),
-    const Center(child: Text('Profile Screen')),
-  ];
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -44,27 +34,17 @@ class _HomePageState extends State<HomePage> {
                 RepeatedTabBarWidget(label: 'Beauty'),
               ],
             )),
-        body: _tabs[_selectedIndex],
-        bottomNavigationBar: BottomNavigationBar(
-            selectedItemColor: Colors.black,
-            unselectedItemColor: Colors.black,
-            type: BottomNavigationBarType.fixed,
-            onTap: (tandalganIndex) {
-              setState(() {});
-              _selectedIndex = tandalganIndex;
-              log('tandalganIndex ====>');
-            },
-            currentIndex: _selectedIndex,
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.search), label: 'Category'),
-              BottomNavigationBarItem(icon: Icon(Icons.shop), label: 'Stores'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.shopping_cart), label: 'Cart'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: 'Profile'),
-            ]),
+        body: TabBarView(children: [
+          Center(child: Text('men screen')),
+          Center(child: Text('women screen')),
+          Center(child: Text('Accessories screen')),
+          Center(child: Text('Shoes screen')),
+          Center(child: Text('Bags screen')),
+          Center(child: Text('Kids screen')),
+          Center(child: Text('home & garden screen')),
+          Center(child: Text('Electronics screen')),
+          Center(child: Text('beauty screen')),
+        ]),
       ),
     );
   }

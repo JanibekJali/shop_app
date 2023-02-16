@@ -5,17 +5,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shop_app/shop/presentation/pages/register_page/register_widgets/camera_choice_widget.dart';
+import 'package:shop_app/shop/presentation/pages/register_page/register_widgets/have_account_widget.dart';
+import 'package:shop_app/shop/presentation/pages/register_page/register_widgets/snack_bar_widget.dart';
 
-final TextEditingController _nameController = TextEditingController();
-
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class CustomerSignUpPage extends StatefulWidget {
+  const CustomerSignUpPage({Key? key}) : super(key: key);
 
   @override
-  _SignUpPageState createState() => _SignUpPageState();
+  _CustomerSignUpPageState createState() => _CustomerSignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
@@ -27,6 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final ImagePicker _picker = ImagePicker();
   XFile? _imageFile;
   dynamic _pickedImageError;
+
   void _pickImageFromCamera() async {
     try {
       final _pickedImage = await _picker.pickImage(
@@ -69,23 +70,6 @@ class _SignUpPageState extends State<SignUpPage> {
     }
   }
 
-  void snackBar(String text) {
-    _scaffoldKey.currentState!.showSnackBar(
-      SnackBar(
-        duration: Duration(seconds: 4),
-        backgroundColor: Colors.yellow,
-        content: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 25,
-            color: Colors.black,
-          ),
-        ),
-      ),
-    );
-  }
-
   void signUp() async {
     setState(() {
       processing = true;
@@ -97,39 +81,41 @@ class _SignUpPageState extends State<SignUpPage> {
             email: _email!,
             password: _password!,
           );
-          Navigator.pushReplacementNamed(context, '/home_page');
+          Navigator.pushReplacementNamed(context, '/customer_login_page');
         } on FirebaseAuthException catch (e) {
           if (e.code == 'weak-password') {
             setState(() {
               processing = false;
             });
-            snackBar('The password provided is too weak.');
+            SnackBarWidget.snackBar(
+                'The password provided is too weak.', _scaffoldKey);
             log('The password provided is too weak.');
           } else if (e.code == 'email-already-in-use') {
             setState(() {
               processing = false;
             });
-            snackBar('The account already exists for that email.');
+            SnackBarWidget.snackBar(
+                'The account already exists for that email.', _scaffoldKey);
             log('The account already exists for that email.');
           }
         } catch (e) {
           setState(() {
             processing = false;
           });
-          snackBar('$e');
+          SnackBarWidget.snackBar('$e', _scaffoldKey);
           log('$e');
         }
       } else {
         setState(() {
           _imageFile = null;
         });
-        snackBar('Please pick an image');
+        SnackBarWidget.snackBar('Please pick an image', _scaffoldKey);
       }
     } else {
       setState(() {
         processing = false;
       });
-      snackBar('Please fill your blank');
+      SnackBarWidget.snackBar('Please fill your blank', _scaffoldKey);
     }
   }
 
@@ -328,25 +314,13 @@ class _SignUpPageState extends State<SignUpPage> {
                         SizedBox(
                           height: 20,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              'already have account? ',
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.black),
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Text(
-                                'Log In',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.purple,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ],
+                        HaveAccountWidget(
+                          haveAccount: 'already have account?',
+                          onTap: () {
+                            Navigator.pushReplacementNamed(
+                                context, '/customer_login_page');
+                          },
+                          registerTitle: 'Log In',
                         ),
                       ],
                     ),

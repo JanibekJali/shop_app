@@ -126,13 +126,16 @@ class _WelcomePageState extends State<WelcomePage> {
                         children: [
                           LogSignWidget(
                             title: 'Log In',
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pushReplacementNamed(
+                                  context, '/customer_login_page');
+                            },
                           ),
                           LogSignWidget(
                             title: 'Sign Up',
                             onTap: () {
                               Navigator.pushReplacementNamed(
-                                  context, '/signup_page');
+                                  context, '/customer_signup_page');
                             },
                           ),
                           SizedBox(
