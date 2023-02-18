@@ -1,6 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/utilities/animation_color_list/animation_color_util.dart';
+import 'package:shop_app/app/utilities/animation_color_list/animation_color_util.dart';
 
 class ColorizeAnimationWidget extends StatelessWidget {
   ColorizeAnimationWidget({

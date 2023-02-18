@@ -1,12 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/shop/presentation/pages/main_pages/customer_pages/customer_page.dart';
-import 'package:shop_app/shop/presentation/pages/main_pages/customer_pages/profile_page/profile_page.dart';
-import 'package:shop_app/shop/presentation/pages/main_pages/home_page.dart';
-import 'package:shop_app/shop/presentation/pages/register_page/customers/customer_login_page.dart';
-import 'package:shop_app/shop/presentation/pages/register_page/customers/customer_sign_up_page.dart';
+import 'package:shop_app/app/customers/auth/customer_login_page.dart';
+import 'package:shop_app/app/customers/auth/customer_sign_up_page.dart';
+import 'package:shop_app/app/customers/main_pages/customer/customer_page.dart';
+import 'package:shop_app/app/home_page.dart';
 
-import 'shop/presentation/pages/welcome_page/welcome_page.dart';
+import 'app/suppliers/main_pages/category/category_page.dart';
+import 'app/welcome_page/welcome_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +21,8 @@ class ShopApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ProfilePage(),
+      home: CategoryPage(),
+
       // initialRoute: '/welcome_page',
       routes: {
         '/welcome_page': (context) => WelcomePage(),

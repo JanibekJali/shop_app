@@ -4,9 +4,9 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:shop_app/shop/presentation/pages/register_page/register_widgets/camera_choice_widget.dart';
-import 'package:shop_app/shop/presentation/pages/register_page/register_widgets/have_account_widget.dart';
-import 'package:shop_app/shop/presentation/pages/register_page/register_widgets/snack_bar_widget.dart';
+import 'package:shop_app/app/auth_widgets/camera_choice_widget.dart';
+import 'package:shop_app/app/auth_widgets/have_account_widget.dart';
+import 'package:shop_app/app/auth_widgets/snack_bar_widget.dart';
 
 class CustomerSignUpPage extends StatefulWidget {
   const CustomerSignUpPage({Key? key}) : super(key: key);

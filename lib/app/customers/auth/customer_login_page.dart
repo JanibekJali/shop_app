@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/shop/presentation/pages/register_page/register_widgets/have_account_widget.dart';
-import 'package:shop_app/shop/presentation/pages/register_page/register_widgets/snack_bar_widget.dart';
+import 'package:shop_app/app/auth_widgets/have_account_widget.dart';
+import 'package:shop_app/app/auth_widgets/snack_bar_widget.dart';
 
 class CustomerLogInPage extends StatefulWidget {
   const CustomerLogInPage({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/shop/presentation/pages/main_pages/home_page.dart';
+import 'package:shop_app/app/home_page.dart';
 
-import 'profile/profile_page.dart';
+import '../profile/profile_page.dart';
 
 class CustomerPage extends StatefulWidget {
   const CustomerPage({Key? key}) : super(key: key);

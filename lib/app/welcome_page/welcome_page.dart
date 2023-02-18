@@ -1,9 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/shop/presentation/pages/welcome_page/welcome_widgets/google_facebook_guest_widget.dart';
-import 'package:shop_app/shop/presentation/pages/welcome_page/welcome_widgets/log_sign_widget.dart';
-import 'package:shop_app/shop/presentation/widgets/animation_widgets/colorize_animation_widget.dart';
+import 'package:shop_app/app/welcome_page/welcome_widgets/google_facebook_guest_widget.dart';
+import 'package:shop_app/app/welcome_page/welcome_widgets/log_sign_widget.dart';
+import 'package:shop_app/app/widgets/animation_widgets/colorize_animation_widget.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
