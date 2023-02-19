@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/app/constants/colors/app_colors.dart';
 
 class YellowDivider extends StatelessWidget {
   const YellowDivider({
@@ -11,7 +12,7 @@ class YellowDivider extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 40),
       child: Divider(
         thickness: 1,
-        color: Colors.yellow,
+        color: AppColors.yellow,
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/app/constants/colors/app_colors.dart';
 
 class HaveAccountWidget extends StatelessWidget {
   const HaveAccountWidget({
@@ -17,7 +18,7 @@ class HaveAccountWidget extends StatelessWidget {
       children: [
         Text(
           haveAccount,
-          style: TextStyle(fontSize: 18, color: Colors.black),
+          style: TextStyle(fontSize: 18, color: AppColors.black),
         ),
         GestureDetector(
           onTap: onTap,
@@ -25,7 +26,7 @@ class HaveAccountWidget extends StatelessWidget {
             registerTitle,
             style: TextStyle(
                 fontSize: 20,
-                color: Colors.purple,
+                color: AppColors.purple,
                 fontWeight: FontWeight.bold),
           ),
         ),

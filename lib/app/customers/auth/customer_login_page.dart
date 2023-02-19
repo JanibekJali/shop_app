@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/app/auth_widgets/have_account_widget.dart';
 import 'package:shop_app/app/auth_widgets/snack_bar_widget.dart';
+import 'package:shop_app/app/constants/colors/app_colors.dart';
 
 class CustomerLogInPage extends StatefulWidget {
   const CustomerLogInPage({Key? key}) : super(key: key);
@@ -121,18 +122,18 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide:
-                                  BorderSide(color: Colors.blue, width: 2.0),
+                                  BorderSide(color: AppColors.blue, width: 2.0),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide:
-                                  BorderSide(color: Colors.purple, width: 2.0),
+                              borderSide: BorderSide(
+                                  color: AppColors.yellow, width: 2.0),
                             ),
                             hintText: 'Please enter your email  ',
                             label: Text(
                               'Email',
                               style: TextStyle(
-                                  fontSize: 20, color: Colors.blueGrey),
+                                  fontSize: 20, color: AppColors.blueGrey),
                             ),
                           ),
                         ),
@@ -165,19 +166,19 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide:
-                                  BorderSide(color: Colors.blue, width: 2.0),
+                              borderSide: BorderSide(
+                                  color: AppColors.yellow, width: 2.0),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide:
-                                  BorderSide(color: Colors.purple, width: 2.0),
+                              borderSide: BorderSide(
+                                  color: AppColors.yellow, width: 2.0),
                             ),
                             hintText: 'Please enter your password ',
                             label: Text(
                               'Password',
                               style: TextStyle(
-                                  fontSize: 20, color: Colors.blueGrey),
+                                  fontSize: 20, color: AppColors.blueGrey),
                             ),
                           ),
                         ),
@@ -210,7 +211,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                   processing == true
                       ? Center(
                           child: CircularProgressIndicator(
-                            color: Colors.purple,
+                            color: AppColors.purple,
                           ),
                         )
                       : GestureDetector(
@@ -219,7 +220,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                                color: Colors.purple,
+                                color: AppColors.purple,
                                 borderRadius: BorderRadius.circular(30)),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
@@ -230,7 +231,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                                 'Log In',
                                 style: TextStyle(
                                   fontSize: 20,
-                                  color: Colors.white,
+                                  color: AppColors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/app/constants/colors/app_colors.dart';
 
 import 'profile_widgets/profile_header_label_widget.dart';
 import 'profile_widgets/repeated_listtile_widget.dart';
@@ -17,15 +18,15 @@ class _ProfilePageState extends State<ProfilePage> {
     final mediaSizeWidth = MediaQuery.of(context).size.width;
     final mediaSizeHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: AppColors.greyShade300,
       body: Stack(children: [
         Container(
           height: 230,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.yellow,
-                Colors.brown,
+                AppColors.yellow,
+                AppColors.brown,
               ],
             ),
           ),
@@ -35,7 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
             SliverAppBar(
               elevation: 0,
               centerTitle: true,
-              backgroundColor: Colors.white,
+              backgroundColor: AppColors.white,
               expandedHeight: 140,
               pinned: true,
               flexibleSpace: LayoutBuilder(builder: (context, ogronichenie) {
@@ -45,15 +46,15 @@ class _ProfilePageState extends State<ProfilePage> {
                     opacity: ogronichenie.biggest.height <= 120 ? 1 : 0,
                     child: Text(
                       'Account',
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: AppColors.black),
                     ),
                   ),
                   background: Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Colors.yellow,
-                          Colors.brown,
+                          AppColors.yellow,
+                          AppColors.brown,
                         ],
                       ),
                     ),
@@ -92,7 +93,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     width: MediaQuery.of(context).size.width * 0.9,
                     height: MediaQuery.of(context).size.height * 0.1,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Row(
@@ -100,7 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.black54,
+                              color: AppColors.black54,
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(30),
                                 bottomLeft: Radius.circular(30),
@@ -115,7 +116,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     child: Text(
                                       'Cart',
                                       style: TextStyle(
-                                        color: Colors.yellow,
+                                        color: AppColors.yellow,
                                         fontSize: 20,
                                       ),
                                     ),
@@ -124,7 +125,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 onTap: () {}),
                           ),
                           Container(
-                            color: Colors.yellow,
+                            color: AppColors.yellow,
                             child: GestureDetector(
                                 child: SizedBox(
                                   height: 50,
@@ -134,7 +135,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     child: Text(
                                       'Orders',
                                       style: TextStyle(
-                                        color: Colors.black54,
+                                        color: AppColors.black54,
                                         fontSize: 20,
                                       ),
                                     ),
@@ -144,7 +145,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.black54,
+                              color: AppColors.black54,
                               borderRadius: BorderRadius.only(
                                 topRight: Radius.circular(30),
                                 bottomRight: Radius.circular(30),
@@ -159,7 +160,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     child: Text(
                                       'Wishlist',
                                       style: TextStyle(
-                                        color: Colors.yellow,
+                                        color: AppColors.yellow,
                                         fontSize: 20,
                                       ),
                                     ),
@@ -170,7 +171,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ]),
                   ),
                   Container(
-                    color: Colors.grey.shade300,
+                    color: AppColors.greyShade300,
                     child: Column(
                       children: [
                         SizedBox(
@@ -185,14 +186,13 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Container(
                             height: mediaSizeHeight * 0.32,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: AppColors.white,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Column(
                               children: [
                                 RepeatedListTile(
                                   title: 'Email Address',
-
                                   subTitle: 'example@email.com',
                                   icon: Icons.email,
                                   // onPressed: () {},
@@ -220,7 +220,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Container(
                             height: mediaSizeHeight * 0.32,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: AppColors.white,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Column(

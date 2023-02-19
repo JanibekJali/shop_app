@@ -13,16 +13,7 @@ class ColorizeAnimationWidget extends StatelessWidget {
       repeatForever: true,
       animatedTexts: [
         ColorizeAnimatedText(
-          'Welcome',
-          textStyle: TextStyle(
-            fontSize: 45,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Acme',
-          ),
-          colors: AnimationColorListUtil.textColor,
-        ),
-        ColorizeAnimatedText(
-          'Duck Store',
+          '',
           textStyle: TextStyle(
             fontSize: 45,
             fontWeight: FontWeight.bold,

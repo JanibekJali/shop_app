@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/app/constants/colors/app_colors.dart';
 
 class CameraChoiceWidget extends StatelessWidget {
   const CameraChoiceWidget({
@@ -16,16 +17,12 @@ class CameraChoiceWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: radiusOnly,
-          color: Colors.purpleAccent,
-        ),
+            borderRadius: radiusOnly, color: AppColors.purpleAccent
+            // color: Colors.purpleAccent,
+            ),
         child: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Icon(
-            icon,
-            size: 25,
-            color: Colors.white,
-          ),
+          child: Icon(icon, size: 25, color: AppColors.white),
         ),
       ),
     );
