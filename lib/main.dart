@@ -4,8 +4,8 @@ import 'package:shop_app/app/customers/auth/customer_login_page.dart';
 import 'package:shop_app/app/customers/auth/customer_sign_up_page.dart';
 import 'package:shop_app/app/customers/main_pages/customer/customer_page.dart';
 import 'package:shop_app/app/home_page.dart';
-
-import 'app/suppliers/main_pages/category/category_page.dart';
+import 'package:shop_app/app/suppliers/main_pages/upload_page.dart';
+import 'app/suppliers/main_pages/suppliers/suppliers_page.dart';
 import 'app/welcome_page/welcome_page.dart';
 
 void main() async {
@@ -21,7 +21,8 @@ class ShopApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CategoryPage(),
+      // home: UploadPage(),
+      home: SuppliersPage(),
 
       // initialRoute: '/welcome_page',
       routes: {
@@ -30,6 +31,7 @@ class ShopApp extends StatelessWidget {
         '/customer_signup_page': (context) => CustomerSignUpPage(),
         '/customer_page': (context) => CustomerPage(),
         '/customer_login_page': (context) => CustomerLogInPage(),
+        '/suppliers_page': (context) => SuppliersPage(),
       },
     );
   }
