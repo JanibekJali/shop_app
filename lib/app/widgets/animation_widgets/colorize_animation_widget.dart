@@ -13,7 +13,7 @@ class ColorizeAnimationWidget extends StatelessWidget {
       repeatForever: true,
       animatedTexts: [
         ColorizeAnimatedText(
-          '',
+          'Welcom To Store',
           textStyle: TextStyle(
             fontSize: 45,
             fontWeight: FontWeight.bold,

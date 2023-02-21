@@ -33,7 +33,7 @@ class _WelcomePageState extends State<WelcomePage> {
             children: [
               ColorizeAnimationWidget(),
               SizedBox(
-                height: 120,
+                height: 250,
                 child: Image(
                   image: AssetImage('assets/images/inapp/logotip.png'),
                 ),
@@ -50,14 +50,14 @@ class _WelcomePageState extends State<WelcomePage> {
                             topLeft: Radius.circular(30),
                             bottomLeft: Radius.circular(30),
                           ),
-                          color: AppColors.grey.withOpacity(0.7),
+                          color: AppColors.greyShade500,
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
                             'Suppliers only',
                             style: TextStyle(
-                                color: AppColors.yellow,
+                                color: AppColors.yellowShade600,
                                 fontSize: 30,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -72,22 +72,20 @@ class _WelcomePageState extends State<WelcomePage> {
                             topLeft: Radius.circular(30),
                             bottomLeft: Radius.circular(30),
                           ),
-                          color: AppColors.grey.withOpacity(0.7),
+                          color: AppColors.greyShade500,
                         ),
                         child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                SizedBox(
-                                  height: 45,
-                                  child: Image(
-                                    image: AssetImage(
-                                        'assets/images/inapp/kurirr.png'),
-                                  ),
+                                Image(
+                                  height: 65,
+                                  image: AssetImage(
+                                      'assets/images/inapp/kurirr.png'),
                                 ),
                                 LogSignWidget(title: 'Log In', onTap: () {}),
-                                LogSignWidget(title: 'Sign Up', onTap: () {}),
+                                // LogSignWidget(title: 'Sign Up', onTap: () {}),
                               ],
                             )),
                       ),
@@ -95,47 +93,6 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ],
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(
-              //     right: 70,
-              //   ),
-              //   child: Container(
-              //     decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.only(
-              //         topRight: Radius.circular(30),
-              //         bottomRight: Radius.circular(30),
-              //       ),
-              //       color: AppColors.grey.withOpacity(0.7),
-              //     ),
-              //     child: Padding(
-              //         padding: const EdgeInsets.all(10.0),
-              //         child: Row(
-              //           mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //           children: [
-              //             LogSignWidget(
-              //               title: 'Log In',
-              //               onTap: () {
-              //                 Navigator.pushReplacementNamed(
-              //                     context, '/customer_login_page');
-              //               },
-              //             ),
-              //             LogSignWidget(
-              //               title: 'Sign Up',
-              //               onTap: () {
-              //                 Navigator.pushReplacementNamed(
-              //                     context, '/customer_signup_page');
-              //               },
-              //             ),
-              //             SizedBox(
-              //               height: 45,
-              //               child: Image(
-              //                 image: AssetImage('assets/images/inapp/logo.jpg'),
-              //               ),
-              //             ),
-              //           ],
-              //         )),
-              //   ),
-              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -148,13 +105,13 @@ class _WelcomePageState extends State<WelcomePage> {
                               topRight: Radius.circular(30),
                               bottomRight: Radius.circular(30),
                             ),
-                            color: AppColors.greyShade100),
+                            color: AppColors.greyShade500),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
                             'Cutomers',
                             style: TextStyle(
-                                color: AppColors.yellow,
+                                color: AppColors.yellowShade600,
                                 fontSize: 30,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -174,7 +131,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                 topRight: Radius.circular(30),
                                 bottomRight: Radius.circular(30),
                               ),
-                              color: AppColors.greyShade100),
+                              color: AppColors.greyShade500),
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Row(
@@ -182,7 +139,10 @@ class _WelcomePageState extends State<WelcomePage> {
                               children: [
                                 LogSignWidget(
                                   title: 'Log In',
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.pushReplacementNamed(
+                                        context, '/customer_login_page');
+                                  },
                                 ),
                                 LogSignWidget(
                                   onTap: () {
@@ -194,7 +154,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                 Image.asset(
                                   'assets/images/inapp/users.png',
                                   height: 50,
-                                  // width: 8,
+                                  // width: 8,`
                                 ),
                               ],
                             ),

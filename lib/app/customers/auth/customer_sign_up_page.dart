@@ -147,7 +147,10 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, '/welcome_page');
+                        },
                         icon: Icon(
                           Icons.home_work,
                           size: 35,
@@ -160,7 +163,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                     children: [
                       CircleAvatar(
                         radius: 60,
-                        backgroundColor: AppColors.yellow,
+                        backgroundColor: AppColors.yellowShade600,
                         backgroundImage: _imageFile == null
                             ? null
                             : FileImage(File(_imageFile!.path)),
@@ -213,7 +216,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                             } else {}
                             return null;
                           },
-                          decoration: new InputDecoration(
+                          decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide:
@@ -222,7 +225,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.yellow, width: 2.0),
+                                  color: AppColors.yellowShade700, width: 2.0),
                             ),
                             hintText: 'Please enter your full name ',
                             label: Text(
@@ -259,7 +262,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.yellow, width: 2.0),
+                                  color: AppColors.yellowShade700, width: 2.0),
                             ),
                             hintText: 'Please enter your email  ',
                             label: Text(
@@ -304,7 +307,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.purple, width: 2.0),
+                                  color: AppColors.yellowShade700, width: 2.0),
                             ),
                             hintText: 'Please enter your password ',
                             label: Text(
@@ -343,7 +346,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                                color: AppColors.yellow,
+                                color: AppColors.yellowShade800,
                                 borderRadius: BorderRadius.circular(30)),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
@@ -362,13 +365,14 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                           ),
                         ),
                   SizedBox(
-                    height: 90,
+                    height: 130,
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        color: AppColors.grey.withOpacity(0.7),
-                        child: Row(
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             // GoogleFacebookGuestWidget(title: 'Google', icon: Icons.google, onTap: (){}),
@@ -379,6 +383,9 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                                   width: 35,
                                 ),
                                 onTap: () {}),
+                            SizedBox(
+                              width: 50,
+                            ),
                             GoogleFacebookGuestWidget(
                               image: Image.asset(
                                 'assets/images/inapp/facebook.jpg',
@@ -387,7 +394,9 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                               onTap: () {},
                               title: "FaceBook",
                             ),
-
+                            SizedBox(
+                              width: 50,
+                            ),
                             GoogleFacebookGuestWidget(
                                 title: 'Guest',
                                 image: Image.asset(
@@ -412,9 +421,9 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                                   }
                                 }),
                           ],
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
