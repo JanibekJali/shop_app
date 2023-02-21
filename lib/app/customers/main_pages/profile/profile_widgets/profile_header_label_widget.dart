@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/app/constants/colors/app_colors.dart';
 
 class ProfileHeaderLabel extends StatelessWidget {
   const ProfileHeaderLabel({
@@ -18,13 +19,13 @@ class ProfileHeaderLabel extends StatelessWidget {
             width: 50,
             child: Divider(
               thickness: 1,
-              color: Colors.grey,
+              color: AppColors.grey,
             ),
           ),
           Text(
             headerLabel,
             style: TextStyle(
-              color: Colors.grey,
+              color: AppColors.grey,
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
@@ -34,7 +35,7 @@ class ProfileHeaderLabel extends StatelessWidget {
             width: 50,
             child: Divider(
               thickness: 1,
-              color: Colors.grey,
+              color: AppColors.grey,
             ),
           ),
         ],

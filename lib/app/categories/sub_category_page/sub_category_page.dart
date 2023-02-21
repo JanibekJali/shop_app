@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/app/constants/colors/app_colors.dart';
 
 class SubCategegoryPage extends StatelessWidget {
   const SubCategegoryPage({
@@ -16,16 +17,16 @@ class SubCategegoryPage extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_ios_new,
-              color: Colors.black,
+              color: AppColors.black,
             )),
         elevation: 0.0,
         backgroundColor: Colors.white,
         title: Center(
             child: Text('Men',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: AppColors.black,
                   fontFamily: 'Acme',
                   fontSize: 28,
                   letterSpacing: 1.5,

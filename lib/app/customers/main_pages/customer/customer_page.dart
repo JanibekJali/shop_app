@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/app/constants/colors/app_colors.dart';
 import 'package:shop_app/app/home_page.dart';
 
 import '../profile/profile_page.dart';
@@ -30,7 +31,7 @@ class _CustomerPageState extends State<CustomerPage> {
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
         currentIndex: _selectedIndex,
         // unselectedItemColor: Colors.red,
-        selectedItemColor: Colors.black,
+        selectedItemColor: AppColors.black,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

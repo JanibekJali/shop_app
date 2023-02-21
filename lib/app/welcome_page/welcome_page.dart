@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/app/constants/colors/app_colors.dart';
 import 'package:shop_app/app/welcome_page/welcome_widgets/google_facebook_guest_widget.dart';
 import 'package:shop_app/app/welcome_page/welcome_widgets/log_sign_widget.dart';
 import 'package:shop_app/app/widgets/animation_widgets/colorize_animation_widget.dart';
@@ -22,7 +23,7 @@ class _WelcomePageState extends State<WelcomePage> {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage('assets/images/inapp/bgimage.jpg'),
+            image: AssetImage('assets/images/inapp/bg.jpg'),
           ),
         ),
         constraints: BoxConstraints.expand(),
@@ -34,21 +35,8 @@ class _WelcomePageState extends State<WelcomePage> {
               SizedBox(
                 height: 120,
                 child: Image(
-                  image: AssetImage('assets/images/inapp/logo.jpg'),
+                  image: AssetImage('assets/images/inapp/logotip.png'),
                 ),
-              ),
-              DefaultTextStyle(
-                style: TextStyle(
-                  fontSize: 60,
-                  color: Colors.lightBlueAccent,
-                  fontFamily: 'Acme',
-                  fontWeight: FontWeight.bold,
-                ),
-                child: AnimatedTextKit(animatedTexts: [
-                  RotateAnimatedText('Buy'),
-                  RotateAnimatedText('Shop'),
-                  RotateAnimatedText('Duck Store'),
-                ]),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -62,14 +50,14 @@ class _WelcomePageState extends State<WelcomePage> {
                             topLeft: Radius.circular(30),
                             bottomLeft: Radius.circular(30),
                           ),
-                          color: Colors.grey.withOpacity(0.7),
+                          color: AppColors.grey.withOpacity(0.7),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
                             'Suppliers only',
                             style: TextStyle(
-                                color: Colors.yellow,
+                                color: AppColors.yellow,
                                 fontSize: 30,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -84,7 +72,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             topLeft: Radius.circular(30),
                             bottomLeft: Radius.circular(30),
                           ),
-                          color: Colors.grey.withOpacity(0.7),
+                          color: AppColors.grey.withOpacity(0.7),
                         ),
                         child: Padding(
                             padding: const EdgeInsets.all(10.0),
@@ -95,7 +83,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                   height: 45,
                                   child: Image(
                                     image: AssetImage(
-                                        'assets/images/inapp/logo.jpg'),
+                                        'assets/images/inapp/kurirr.png'),
                                   ),
                                 ),
                                 LogSignWidget(title: 'Log In', onTap: () {}),
@@ -107,86 +95,155 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  right: 70,
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(30),
-                      bottomRight: Radius.circular(30),
-                    ),
-                    color: Colors.grey.withOpacity(0.7),
-                  ),
-                  child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          LogSignWidget(
-                            title: 'Log In',
-                            onTap: () {
-                              Navigator.pushReplacementNamed(
-                                  context, '/customer_login_page');
-                            },
+              // Padding(
+              //   padding: const EdgeInsets.only(
+              //     right: 70,
+              //   ),
+              //   child: Container(
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.only(
+              //         topRight: Radius.circular(30),
+              //         bottomRight: Radius.circular(30),
+              //       ),
+              //       color: AppColors.grey.withOpacity(0.7),
+              //     ),
+              //     child: Padding(
+              //         padding: const EdgeInsets.all(10.0),
+              //         child: Row(
+              //           mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //           children: [
+              //             LogSignWidget(
+              //               title: 'Log In',
+              //               onTap: () {
+              //                 Navigator.pushReplacementNamed(
+              //                     context, '/customer_login_page');
+              //               },
+              //             ),
+              //             LogSignWidget(
+              //               title: 'Sign Up',
+              //               onTap: () {
+              //                 Navigator.pushReplacementNamed(
+              //                     context, '/customer_signup_page');
+              //               },
+              //             ),
+              //             SizedBox(
+              //               height: 45,
+              //               child: Image(
+              //                 image: AssetImage('assets/images/inapp/logo.jpg'),
+              //               ),
+              //             ),
+              //           ],
+              //         )),
+              //   ),
+              // ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(30),
+                              bottomRight: Radius.circular(30),
+                            ),
+                            color: AppColors.greyShade100),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            'Cutomers',
+                            style: TextStyle(
+                                color: AppColors.yellow,
+                                fontSize: 30,
+                                fontWeight: FontWeight.w600),
                           ),
-                          LogSignWidget(
-                            title: 'Sign Up',
-                            onTap: () {
-                              Navigator.pushReplacementNamed(
-                                  context, '/customer_signup_page');
-                            },
-                          ),
-                          SizedBox(
-                            height: 45,
-                            child: Image(
-                              image: AssetImage('assets/images/inapp/logo.jpg'),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          right: 86,
+                          bottom: 100,
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(30),
+                                bottomRight: Radius.circular(30),
+                              ),
+                              color: AppColors.greyShade100),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                LogSignWidget(
+                                  title: 'Log In',
+                                  onTap: () {},
+                                ),
+                                LogSignWidget(
+                                  onTap: () {
+                                    Navigator.pushReplacementNamed(
+                                        context, '/customer_signup_page');
+                                  },
+                                  title: 'Sing In',
+                                ),
+                                Image.asset(
+                                  'assets/images/inapp/users.png',
+                                  height: 50,
+                                  // width: 8,
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      )),
-                ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              Container(
-                color: Colors.grey.withOpacity(0.7),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    // GoogleFacebookGuestWidget(title: 'Google', icon: Icons.google, onTap: (){}),
-                    GoogleFacebookGuestWidget(
-                        title: 'Google',
-                        color: Color(0xff3F5123),
-                        icon: Icons.laptop_chromebook_sharp,
-                        onTap: () {}),
-                    GoogleFacebookGuestWidget(
-                        title: 'Facebook',
-                        color: Color(0xff3F5798),
-                        icon: Icons.facebook,
-                        onTap: () {}),
-                    GoogleFacebookGuestWidget(
-                        title: 'Guest',
-                        color: Color(0xff3DC5FB),
-                        icon: Icons.person,
-                        onTap: () async {
-                          try {
-                            final userCredential =
-                                await FirebaseAuth.instance.signInAnonymously();
-                            print("Signed in with temporary account.");
-                          } on FirebaseAuthException catch (e) {
-                            switch (e.code) {
-                              case "operation-not-allowed":
-                                print(
-                                    "Anonymous auth hasn't been enabled for this project.");
-                                break;
-                              default:
-                                print("Unknown error.");
-                            }
-                          }
-                        }),
-                  ],
-                ),
-              )
+              // Container(
+              //   color: AppColors.grey.withOpacity(0.7),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //     children: [
+              //       // GoogleFacebookGuestWidget(title: 'Google', icon: Icons.google, onTap: (){}),
+              //       GoogleFacebookGuestWidget(
+              //           title: 'Google',
+              //           color: Color(0xff3F5123),
+              //           icon: Icons.laptop_chromebook_sharp,
+              //           onTap: () {}),
+              //       GoogleFacebookGuestWidget(
+              //           title: 'Facebook',
+              //           color: Color(0xff3F5798),
+              //           icon: Icons.facebook,
+              //           onTap: () {}),
+              //       GoogleFacebookGuestWidget(
+              //           title: 'Guest',
+              //           color: Color(0xff3DC5FB),
+              //           icon: Icons.person,
+              //           onTap: () async {
+              //             try {
+              //               final userCredential =
+              //                   await FirebaseAuth.instance.signInAnonymously();
+              //               print("Signed in with temporary account.");
+              //             } on FirebaseAuthException catch (e) {
+              //               switch (e.code) {
+              //                 case "operation-not-allowed":
+              //                   print(
+              //                       "Anonymous auth hasn't been enabled for this project.");
+              //                   break;
+              //                 default:
+              //                   print("Unknown error.");
+              //               }
+              //             }
+              //           }),
+              //     ],
+              //   ),
+              // )
             ],
           ),
         ),

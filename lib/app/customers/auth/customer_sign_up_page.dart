@@ -7,6 +7,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shop_app/app/auth_widgets/camera_choice_widget.dart';
 import 'package:shop_app/app/auth_widgets/have_account_widget.dart';
 import 'package:shop_app/app/auth_widgets/snack_bar_widget.dart';
+import 'package:shop_app/app/welcome_page/welcome_widgets/google_facebook_guest_widget.dart';
+
+import '../../constants/colors/app_colors.dart';
 
 class CustomerSignUpPage extends StatefulWidget {
   const CustomerSignUpPage({Key? key}) : super(key: key);
@@ -157,7 +160,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                     children: [
                       CircleAvatar(
                         radius: 60,
-                        backgroundColor: Colors.purple,
+                        backgroundColor: AppColors.yellow,
                         backgroundImage: _imageFile == null
                             ? null
                             : FileImage(File(_imageFile!.path)),
@@ -214,12 +217,12 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide:
-                                  BorderSide(color: Colors.blue, width: 2.0),
+                                  BorderSide(color: AppColors.blue, width: 2.0),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide:
-                                  BorderSide(color: Colors.purple, width: 2.0),
+                              borderSide: BorderSide(
+                                  color: AppColors.yellow, width: 2.0),
                             ),
                             hintText: 'Please enter your full name ',
                             label: Text(
@@ -251,18 +254,18 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide:
-                                  BorderSide(color: Colors.blue, width: 2.0),
+                                  BorderSide(color: AppColors.blue, width: 2.0),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide:
-                                  BorderSide(color: Colors.purple, width: 2.0),
+                              borderSide: BorderSide(
+                                  color: AppColors.yellow, width: 2.0),
                             ),
                             hintText: 'Please enter your email  ',
                             label: Text(
                               'Email',
                               style: TextStyle(
-                                  fontSize: 20, color: Colors.blueGrey),
+                                  fontSize: 20, color: AppColors.blueGrey),
                             ),
                           ),
                         ),
@@ -296,18 +299,18 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide:
-                                  BorderSide(color: Colors.blue, width: 2.0),
+                                  BorderSide(color: AppColors.blue, width: 2.0),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide:
-                                  BorderSide(color: Colors.purple, width: 2.0),
+                              borderSide: BorderSide(
+                                  color: AppColors.purple, width: 2.0),
                             ),
                             hintText: 'Please enter your password ',
                             label: Text(
                               'Password',
                               style: TextStyle(
-                                  fontSize: 20, color: Colors.blueGrey),
+                                  fontSize: 20, color: AppColors.blueGrey),
                             ),
                           ),
                         ),
@@ -331,7 +334,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   processing == true
                       ? Center(
                           child: CircularProgressIndicator(
-                            color: Colors.purple,
+                            color: AppColors.yellow,
                           ),
                         )
                       : GestureDetector(
@@ -340,7 +343,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                                color: Colors.purple,
+                                color: AppColors.yellow,
                                 borderRadius: BorderRadius.circular(30)),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
@@ -351,13 +354,68 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                                 'Sign Up',
                                 style: TextStyle(
                                   fontSize: 20,
-                                  color: Colors.white,
+                                  color: AppColors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
-                        )
+                        ),
+                  SizedBox(
+                    height: 90,
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        color: AppColors.grey.withOpacity(0.7),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            // GoogleFacebookGuestWidget(title: 'Google', icon: Icons.google, onTap: (){}),
+                            GoogleFacebookGuestWidget(
+                                title: 'Google',
+                                image: Image.asset(
+                                  'assets/images/inapp/google.jpg',
+                                  width: 35,
+                                ),
+                                onTap: () {}),
+                            GoogleFacebookGuestWidget(
+                              image: Image.asset(
+                                'assets/images/inapp/facebook.jpg',
+                                width: 35,
+                              ),
+                              onTap: () {},
+                              title: "FaceBook",
+                            ),
+
+                            GoogleFacebookGuestWidget(
+                                title: 'Guest',
+                                image: Image.asset(
+                                  'assets/images/inapp/person.png',
+                                  width: 35,
+                                ),
+                                onTap: () async {
+                                  try {
+                                    final userCredential = await FirebaseAuth
+                                        .instance
+                                        .signInAnonymously();
+                                    print("Signed in with temporary account.");
+                                  } on FirebaseAuthException catch (e) {
+                                    switch (e.code) {
+                                      case "operation-not-allowed":
+                                        print(
+                                            "Anonymous auth hasn't been enabled for this project.");
+                                        break;
+                                      default:
+                                        print("Unknown error.");
+                                    }
+                                  }
+                                }),
+                          ],
+                        ),
+                      )
+                    ],
+                  )
                 ],
               ),
             ),
