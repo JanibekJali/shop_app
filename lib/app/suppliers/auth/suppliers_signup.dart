@@ -244,7 +244,7 @@ class _SuppliersSignUpState extends State<SuppliersSignUp> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.yellow, width: 2.0),
+                                  color: AppColors.yellowShade600, width: 2.0),
                             ),
                             hintText: 'Please enter your full name ',
                             label: Text(
@@ -281,7 +281,7 @@ class _SuppliersSignUpState extends State<SuppliersSignUp> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.yellow, width: 2.0),
+                                  color: AppColors.yellowShade600, width: 2.0),
                             ),
                             hintText: 'Please enter your email  ',
                             label: Text(
@@ -326,7 +326,7 @@ class _SuppliersSignUpState extends State<SuppliersSignUp> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.purple, width: 2.0),
+                                  color: AppColors.yellowShade600, width: 2.0),
                             ),
                             hintText: 'Please enter your password ',
                             label: Text(
@@ -365,7 +365,7 @@ class _SuppliersSignUpState extends State<SuppliersSignUp> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                                color: AppColors.yellow,
+                                color: AppColors.yellowShade700,
                                 borderRadius: BorderRadius.circular(30)),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
@@ -389,53 +389,63 @@ class _SuppliersSignUpState extends State<SuppliersSignUp> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        color: AppColors.grey.withOpacity(0.7),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            // GoogleFacebookGuestWidget(title: 'Google', icon: Icons.google, onTap: (){}),
-                            GoogleFacebookGuestWidget(
-                                title: 'Google',
-                                image: Image.asset(
-                                  'assets/images/inapp/google.jpg',
-                                  width: 35,
-                                ),
-                                onTap: () {}),
-                            GoogleFacebookGuestWidget(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SizedBox(
+                            width: 50,
+                          ),
+                          // GoogleFacebookGuestWidget(title: 'Google', icon: Icons.google, onTap: (){}),
+                          GoogleFacebookGuestWidget(
+                              title: 'Google',
                               image: Image.asset(
-                                'assets/images/inapp/facebook.jpg',
-                                width: 35,
+                                'assets/images/inapp/google.jpg',
+                                width: 40,
                               ),
-                              onTap: () {},
-                              title: "FaceBook",
-                            ),
+                              onTap: () {}),
+                          SizedBox(
+                            width: 50,
+                          ),
 
-                            GoogleFacebookGuestWidget(
-                                title: 'Guest',
-                                image: Image.asset(
-                                  'assets/images/inapp/person.png',
-                                  width: 35,
-                                ),
-                                onTap: () async {
-                                  try {
-                                    final userCredential = await FirebaseAuth
-                                        .instance
-                                        .signInAnonymously();
-                                    print("Signed in with temporary account.");
-                                  } on FirebaseAuthException catch (e) {
-                                    switch (e.code) {
-                                      case "operation-not-allowed":
-                                        print(
-                                            "Anonymous auth hasn't been enabled for this project.");
-                                        break;
-                                      default:
-                                        print("Unknown error.");
-                                    }
+                          GoogleFacebookGuestWidget(
+                            image: Image.asset(
+                              'assets/images/inapp/facebook.jpg',
+                              width: 40,
+                            ),
+                            onTap: () {},
+                            title: "Facebook",
+                          ),
+                          SizedBox(
+                            width: 50,
+                          ),
+
+                          GoogleFacebookGuestWidget(
+                              title: 'Guest',
+                              image: Image.asset(
+                                'assets/images/inapp/person.png',
+                                width: 40,
+                              ),
+                              onTap: () async {
+                                try {
+                                  final userCredential = await FirebaseAuth
+                                      .instance
+                                      .signInAnonymously();
+                                  print("Signed in with temporary account.");
+                                } on FirebaseAuthException catch (e) {
+                                  switch (e.code) {
+                                    case "operation-not-allowed":
+                                      print(
+                                          "Anonymous auth hasn't been enabled for this project.");
+                                      break;
+                                    default:
+                                      print("Unknown error.");
                                   }
-                                }),
-                          ],
-                        ),
+                                }
+                              }),
+                          SizedBox(
+                            width: 50,
+                          ),
+                        ],
                       )
                     ],
                   )

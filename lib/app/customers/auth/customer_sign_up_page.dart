@@ -182,7 +182,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                     children: [
                       CircleAvatar(
                         radius: 60,
-                        backgroundColor: AppColors.yellow,
+                        backgroundColor: AppColors.yellowShade600,
                         backgroundImage: _imageFile == null
                             ? null
                             : FileImage(File(_imageFile!.path)),
@@ -244,13 +244,13 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.yellow, width: 2.0),
+                                  color: AppColors.yellowShade600, width: 2.0),
                             ),
                             hintText: 'Please enter your full name ',
                             label: Text(
                               'Full name',
                               style: TextStyle(
-                                  fontSize: 20, color: Colors.blueGrey),
+                                  fontSize: 20, color: AppColors.blueGrey),
                             ),
                           ),
                         ),
@@ -281,7 +281,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.yellow, width: 2.0),
+                                  color: AppColors.yellowShade600, width: 2.0),
                             ),
                             hintText: 'Please enter your email  ',
                             label: Text(
@@ -309,9 +309,11 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                           obscureText: isVisible,
                           decoration: InputDecoration(
                             suffixIcon: IconButton(
-                              icon: Icon(isVisible == true
-                                  ? Icons.visibility_off
-                                  : Icons.visibility),
+                              icon: Icon(
+                                isVisible == true
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                              ),
                               onPressed: () {
                                 setState(() {
                                   isVisible = !isVisible;
@@ -326,7 +328,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.purple, width: 2.0),
+                                  color: AppColors.yellowShade600, width: 2.0),
                             ),
                             hintText: 'Please enter your password ',
                             label: Text(
@@ -356,7 +358,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   processing == true
                       ? Center(
                           child: CircularProgressIndicator(
-                            color: AppColors.yellow,
+                            color: AppColors.yellowShade600,
                           ),
                         )
                       : GestureDetector(
@@ -365,7 +367,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                                color: AppColors.yellow,
+                                color: AppColors.yellowShade600,
                                 borderRadius: BorderRadius.circular(30)),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
@@ -384,58 +386,65 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                           ),
                         ),
                   SizedBox(
-                    height: 90,
+                    height: 100,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        color: AppColors.grey.withOpacity(0.7),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            // GoogleFacebookGuestWidget(title: 'Google', icon: Icons.google, onTap: (){}),
-                            GoogleFacebookGuestWidget(
-                                title: 'Google',
-                                image: Image.asset(
-                                  'assets/images/inapp/google.jpg',
-                                  width: 35,
-                                ),
-                                onTap: () {}),
-                            GoogleFacebookGuestWidget(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SizedBox(
+                            width: 50,
+                          ),
+                          GoogleFacebookGuestWidget(
+                              title: 'Google',
                               image: Image.asset(
-                                'assets/images/inapp/facebook.jpg',
-                                width: 35,
+                                'assets/images/inapp/google.jpg',
+                                width: 40,
                               ),
-                              onTap: () {},
-                              title: "FaceBook",
+                              onTap: () {}),
+                          SizedBox(
+                            width: 50,
+                          ),
+                          GoogleFacebookGuestWidget(
+                            image: Image.asset(
+                              'assets/images/inapp/facebook.jpg',
+                              width: 40,
                             ),
-
-                            GoogleFacebookGuestWidget(
-                                title: 'Guest',
-                                image: Image.asset(
-                                  'assets/images/inapp/person.png',
-                                  width: 35,
-                                ),
-                                onTap: () async {
-                                  try {
-                                    final userCredential = await FirebaseAuth
-                                        .instance
-                                        .signInAnonymously();
-                                    print("Signed in with temporary account.");
-                                  } on FirebaseAuthException catch (e) {
-                                    switch (e.code) {
-                                      case "operation-not-allowed":
-                                        print(
-                                            "Anonymous auth hasn't been enabled for this project.");
-                                        break;
-                                      default:
-                                        print("Unknown error.");
-                                    }
+                            onTap: () {},
+                            title: "Facebook",
+                          ),
+                          SizedBox(
+                            width: 50,
+                          ),
+                          GoogleFacebookGuestWidget(
+                              title: 'Guest',
+                              image: Image.asset(
+                                'assets/images/inapp/person.png',
+                                width: 40,
+                              ),
+                              onTap: () async {
+                                try {
+                                  final userCredential = await FirebaseAuth
+                                      .instance
+                                      .signInAnonymously();
+                                  print("Signed in with temporary account.");
+                                } on FirebaseAuthException catch (e) {
+                                  switch (e.code) {
+                                    case "operation-not-allowed":
+                                      print(
+                                          "Anonymous auth hasn't been enabled for this project.");
+                                      break;
+                                    default:
+                                      print("Unknown error.");
                                   }
-                                }),
-                          ],
-                        ),
+                                }
+                              }),
+                          SizedBox(
+                            width: 50,
+                          ),
+                        ],
                       )
                     ],
                   )

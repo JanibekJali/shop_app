@@ -127,7 +127,7 @@ class _SuppliersLogInState extends State<SuppliersLogIn> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.yellow, width: 2.0),
+                                  color: AppColors.yellowShade700, width: 2.0),
                             ),
                             hintText: 'Please enter your email  ',
                             label: Text(
@@ -166,13 +166,13 @@ class _SuppliersLogInState extends State<SuppliersLogIn> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide(
-                                  color: AppColors.yellow, width: 2.0),
+                              borderSide:
+                                  BorderSide(color: AppColors.blue, width: 2.0),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.yellow, width: 2.0),
+                                  color: AppColors.yellowShade700, width: 2.0),
                             ),
                             hintText: 'Please enter your password ',
                             label: Text(
@@ -220,7 +220,7 @@ class _SuppliersLogInState extends State<SuppliersLogIn> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                                color: AppColors.purple,
+                                color: AppColors.yellowShade800,
                                 borderRadius: BorderRadius.circular(30)),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
