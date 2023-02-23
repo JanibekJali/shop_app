@@ -22,7 +22,7 @@ class GoogleFacebookGuestWidget extends StatelessWidget {
           image,
           Text(
             title,
-            style: TextStyle(fontSize: 18, color: AppColors.black26),
+            style: TextStyle(fontSize: 18.5, color: AppColors.blueGreyShade400),
           ),
         ],
       ),

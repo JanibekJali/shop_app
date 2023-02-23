@@ -127,7 +127,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.yellow, width: 2.0),
+                                  color: AppColors.yellowShade700, width: 2.0),
                             ),
                             hintText: 'Please enter your email  ',
                             label: Text(
@@ -155,9 +155,11 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                           obscureText: isVisible,
                           decoration: InputDecoration(
                             suffixIcon: IconButton(
-                              icon: Icon(isVisible == true
-                                  ? Icons.visibility_off
-                                  : Icons.visibility),
+                              icon: Icon(
+                                isVisible == true
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                              ),
                               onPressed: () {
                                 setState(() {
                                   isVisible = !isVisible;
@@ -166,13 +168,13 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide(
-                                  color: AppColors.yellow, width: 2.0),
+                              borderSide:
+                                  BorderSide(color: AppColors.blue, width: 2.0),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.yellow, width: 2.0),
+                                  color: AppColors.yellowShade700, width: 2.0),
                             ),
                             hintText: 'Please enter your password ',
                             label: Text(
@@ -211,7 +213,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                   processing == true
                       ? Center(
                           child: CircularProgressIndicator(
-                            color: AppColors.purple,
+                            color: AppColors.yellowShade700,
                           ),
                         )
                       : GestureDetector(
@@ -220,7 +222,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                                color: AppColors.purple,
+                                color: AppColors.yellowShade700,
                                 borderRadius: BorderRadius.circular(30)),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
