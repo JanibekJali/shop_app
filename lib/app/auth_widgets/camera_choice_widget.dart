@@ -17,7 +17,7 @@ class CameraChoiceWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: radiusOnly, color: AppColors.yellowAccent
+            borderRadius: radiusOnly, color: AppColors.yellowShade600
             // color: Colors.purpleAccent,
             ),
         child: Padding(

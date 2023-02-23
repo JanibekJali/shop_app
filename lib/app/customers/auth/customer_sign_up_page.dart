@@ -246,7 +246,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: BorderSide(
-                                  color: AppColors.yellowShade600, width: 2.0),
+                                  color: AppColors.yellowShade500, width: 2.0),
                             ),
                             hintText: 'Please enter your full name ',
                             label: Text(
