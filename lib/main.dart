@@ -5,7 +5,7 @@ import 'package:shop_app/app/customers/auth/customer_sign_up_page.dart';
 import 'package:shop_app/app/customers/main_pages/customer/customer_page.dart';
 import 'package:shop_app/app/home_page.dart';
 import 'package:shop_app/app/suppliers/main_pages/upload_page.dart';
-import 'app/suppliers/main_pages/register_page/log_in_page.dart';
+// import 'app/suppliers/main_pages/register_page/log_in_page.dart';
 import 'app/suppliers/main_pages/suppliers/suppliers_page.dart';
 import 'app/welcome_page/welcome_page.dart';
 
@@ -33,7 +33,7 @@ class ShopApp extends StatelessWidget {
         '/customer_page': (context) => CustomerPage(),
         '/customer_login_page': (context) => CustomerLogInPage(),
         '/suppliers_page': (context) => SuppliersPage(),
-        'supplires_login_page': (context) => LogInPage(),
+        // 'supplires_login_page': (context) => LogInPage(),
       },
     );
   }
