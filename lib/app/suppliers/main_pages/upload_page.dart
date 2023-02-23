@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element
 
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shop_app/app/auth_widgets/snack_bar_widget.dart';
-import 'package:shop_app/app/suppliers/main_pages/suppliers/suppliers_widget/upload_widget.dart';
+import 'package:shop_app/app/suppliers/suppliers_widget/upload_widget.dart';
 
 class UploadPage extends StatefulWidget {
   UploadPage({Key? key}) : super(key: key);

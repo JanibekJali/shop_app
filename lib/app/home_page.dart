@@ -16,6 +16,7 @@ class _HomePageState extends State<HomePage> {
       length: 9,
       child: Scaffold(
         appBar: AppBar(
+            automaticallyImplyLeading: false,
             backgroundColor: Colors.white,
             title: SearchWidget(),
             bottom: TabBar(

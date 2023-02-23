@@ -1,8 +1,5 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/app/constants/colors/app_colors.dart';
-import 'package:shop_app/app/welcome_page/welcome_widgets/google_facebook_guest_widget.dart';
 import 'package:shop_app/app/welcome_page/welcome_widgets/log_sign_widget.dart';
 import 'package:shop_app/app/widgets/animation_widgets/colorize_animation_widget.dart';
 
@@ -86,8 +83,18 @@ class _WelcomePageState extends State<WelcomePage> {
                                         'assets/images/inapp/kurirr.png'),
                                   ),
                                 ),
-                                LogSignWidget(title: 'Log In', onTap: () {}),
-                                LogSignWidget(title: 'Sign Up', onTap: () {}),
+                                LogSignWidget(
+                                    title: 'Log In',
+                                    onTap: () {
+                                      Navigator.pushReplacementNamed(
+                                          context, '/suppliers_login');
+                                    }),
+                                LogSignWidget(
+                                    title: 'Sign Up',
+                                    onTap: () {
+                                      Navigator.pushReplacementNamed(
+                                          context, '/suppliers_signup');
+                                    }),
                               ],
                             )),
                       ),
@@ -95,47 +102,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ],
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(
-              //     right: 70,
-              //   ),
-              //   child: Container(
-              //     decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.only(
-              //         topRight: Radius.circular(30),
-              //         bottomRight: Radius.circular(30),
-              //       ),
-              //       color: AppColors.grey.withOpacity(0.7),
-              //     ),
-              //     child: Padding(
-              //         padding: const EdgeInsets.all(10.0),
-              //         child: Row(
-              //           mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //           children: [
-              //             LogSignWidget(
-              //               title: 'Log In',
-              //               onTap: () {
-              //                 Navigator.pushReplacementNamed(
-              //                     context, '/customer_login_page');
-              //               },
-              //             ),
-              //             LogSignWidget(
-              //               title: 'Sign Up',
-              //               onTap: () {
-              //                 Navigator.pushReplacementNamed(
-              //                     context, '/customer_signup_page');
-              //               },
-              //             ),
-              //             SizedBox(
-              //               height: 45,
-              //               child: Image(
-              //                 image: AssetImage('assets/images/inapp/logo.jpg'),
-              //               ),
-              //             ),
-              //           ],
-              //         )),
-              //   ),
-              // ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -148,7 +115,7 @@ class _WelcomePageState extends State<WelcomePage> {
                               topRight: Radius.circular(30),
                               bottomRight: Radius.circular(30),
                             ),
-                            color: AppColors.greyShade100),
+                            color: AppColors.grey),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
@@ -181,15 +148,18 @@ class _WelcomePageState extends State<WelcomePage> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 LogSignWidget(
-                                  title: 'Log In',
-                                  onTap: () {},
+                                  title: 'Sign In',
+                                  onTap: () {
+                                    Navigator.pushReplacementNamed(
+                                        context, '/customer_login_page');
+                                  },
                                 ),
                                 LogSignWidget(
                                   onTap: () {
                                     Navigator.pushReplacementNamed(
                                         context, '/customer_signup_page');
                                   },
-                                  title: 'Sing In',
+                                  title: 'Sing Up ',
                                 ),
                                 Image.asset(
                                   'assets/images/inapp/users.png',

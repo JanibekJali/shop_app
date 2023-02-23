@@ -13,19 +13,19 @@ import 'package:shop_app/app/welcome_page/welcome_widgets/google_facebook_guest_
 
 import '../../constants/colors/app_colors.dart';
 
-class CustomerSignUpPage extends StatefulWidget {
-  const CustomerSignUpPage({Key? key}) : super(key: key);
+class SuppliersSignUp extends StatefulWidget {
+  const SuppliersSignUp({Key? key}) : super(key: key);
 
   @override
-  _CustomerSignUpPageState createState() => _CustomerSignUpPageState();
+  _SuppliersSignUpState createState() => _SuppliersSignUpState();
 }
 
-class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
+class _SuppliersSignUpState extends State<SuppliersSignUp> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
-  CollectionReference customers =
-      FirebaseFirestore.instance.collection('customers');
+  CollectionReference suppliers =
+      FirebaseFirestore.instance.collection('suppliers');
   String? _name;
   String? _email;
   String? _password;
@@ -92,12 +92,12 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
           );
           firebase_storage.Reference reference = firebase_storage
               .FirebaseStorage.instance
-              .ref('customers-images/$_email.jpg');
+              .ref('suppliers-images/$_email.jpg');
           await reference.putFile(File(_imageFile!.path));
           _uid = FirebaseAuth.instance.currentUser!.uid;
           _profileImage = await reference.getDownloadURL();
-          Navigator.pushReplacementNamed(context, '/customer_page');
-          await customers.doc(_uid).set({
+          Navigator.pushReplacementNamed(context, '/suppliers_page');
+          await suppliers.doc(_uid).set({
             'name': _name,
             'email': _email,
             'phone': '',
@@ -343,7 +343,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                           haveAccount: 'already have account?',
                           onTap: () {
                             Navigator.pushReplacementNamed(
-                                context, '/customer_login_page');
+                                context, '/suppliers_login');
                           },
                           registerTitle: 'Sign In',
                         ),

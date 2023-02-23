@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/app/customers/main_pages/profile/alert_dialog/alert_dialog.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -41,16 +42,13 @@ class _DashboardPageState extends State<DashboardPage> {
         elevation: 0,
         title: Text(
           "Dashboard",
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 30,
-            fontFamily: 'Acme'
-          ),
+          style:
+              TextStyle(color: Colors.black, fontSize: 30, fontFamily: 'Acme'),
         ),
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.popAndPushNamed(context, '/suppliers_page');
+              AlertDialogLogOut.showAlertDialog(context);
             },
             icon: Icon(
               Icons.logout,

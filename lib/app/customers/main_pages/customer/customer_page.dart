@@ -18,7 +18,9 @@ class _CustomerPageState extends State<CustomerPage> {
     Center(child: Text('Category Screen')),
     Center(child: Text('Stores Screen')),
     Center(child: Text('Cart Screen')),
-    ProfilePage(),
+    ProfilePage(
+        // documentId: FirebaseAuth.instance.currentUser!.uid,
+        ),
   ];
 
   @override
