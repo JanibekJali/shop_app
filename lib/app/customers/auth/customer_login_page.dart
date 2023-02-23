@@ -24,9 +24,11 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
   bool processing = false;
 
   void logIn() async {
-    setState(() {
-      processing = true;
-    });
+    setState(
+      () {
+        processing = true;
+      },
+    );
     if (_formKey.currentState!.validate()) {
       try {
         await FirebaseAuth.instance.signInWithEmailAndPassword(
