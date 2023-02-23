@@ -20,10 +20,14 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        width: 200,
+        height: 100,
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage('assets/images/inapp/bg.jpg'),
+            image: AssetImage(
+              'assets/images/inapp/bg.jpg',
+            ),
           ),
         ),
         constraints: BoxConstraints.expand(),
@@ -86,8 +90,8 @@ class _WelcomePageState extends State<WelcomePage> {
                                         'assets/images/inapp/kurirr.png'),
                                   ),
                                 ),
-                                LogSignWidget(title: 'Log In', onTap: () {}),
-                                LogSignWidget(title: 'Sign Up', onTap: () {}),
+                                LogSignWidget(title: 'Log In', onTap: () {})
+                                // LogSignWidget(title: 'Sign Up', onTap: () {}),
                               ],
                             )),
                       ),
@@ -95,47 +99,6 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ],
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(
-              //     right: 70,
-              //   ),
-              //   child: Container(
-              //     decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.only(
-              //         topRight: Radius.circular(30),
-              //         bottomRight: Radius.circular(30),
-              //       ),
-              //       color: AppColors.grey.withOpacity(0.7),
-              //     ),
-              //     child: Padding(
-              //         padding: const EdgeInsets.all(10.0),
-              //         child: Row(
-              //           mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //           children: [
-              //             LogSignWidget(
-              //               title: 'Log In',
-              //               onTap: () {
-              //                 Navigator.pushReplacementNamed(
-              //                     context, '/customer_login_page');
-              //               },
-              //             ),
-              //             LogSignWidget(
-              //               title: 'Sign Up',
-              //               onTap: () {
-              //                 Navigator.pushReplacementNamed(
-              //                     context, '/customer_signup_page');
-              //               },
-              //             ),
-              //             SizedBox(
-              //               height: 45,
-              //               child: Image(
-              //                 image: AssetImage('assets/images/inapp/logo.jpg'),
-              //               ),
-              //             ),
-              //           ],
-              //         )),
-              //   ),
-              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -148,7 +111,7 @@ class _WelcomePageState extends State<WelcomePage> {
                               topRight: Radius.circular(30),
                               bottomRight: Radius.circular(30),
                             ),
-                            color: AppColors.greyShade100),
+                            color: AppColors.greyShade500),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
@@ -161,7 +124,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                       ),
                       SizedBox(
-                        height: 6,
+                        height: 7,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
@@ -174,7 +137,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                 topRight: Radius.circular(30),
                                 bottomRight: Radius.circular(30),
                               ),
-                              color: AppColors.greyShade100),
+                              color: AppColors.greyShade500),
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Row(
@@ -205,45 +168,6 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ],
               ),
-              // Container(
-              //   color: AppColors.grey.withOpacity(0.7),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //     children: [
-              //       // GoogleFacebookGuestWidget(title: 'Google', icon: Icons.google, onTap: (){}),
-              //       GoogleFacebookGuestWidget(
-              //           title: 'Google',
-              //           color: Color(0xff3F5123),
-              //           icon: Icons.laptop_chromebook_sharp,
-              //           onTap: () {}),
-              //       GoogleFacebookGuestWidget(
-              //           title: 'Facebook',
-              //           color: Color(0xff3F5798),
-              //           icon: Icons.facebook,
-              //           onTap: () {}),
-              //       GoogleFacebookGuestWidget(
-              //           title: 'Guest',
-              //           color: Color(0xff3DC5FB),
-              //           icon: Icons.person,
-              //           onTap: () async {
-              //             try {
-              //               final userCredential =
-              //                   await FirebaseAuth.instance.signInAnonymously();
-              //               print("Signed in with temporary account.");
-              //             } on FirebaseAuthException catch (e) {
-              //               switch (e.code) {
-              //                 case "operation-not-allowed":
-              //                   print(
-              //                       "Anonymous auth hasn't been enabled for this project.");
-              //                   break;
-              //                 default:
-              //                   print("Unknown error.");
-              //               }
-              //             }
-              //           }),
-              //     ],
-              //   ),
-              // )
             ],
           ),
         ),

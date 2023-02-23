@@ -6,14 +6,14 @@ import 'package:shop_app/app/auth_widgets/have_account_widget.dart';
 import 'package:shop_app/app/auth_widgets/snack_bar_widget.dart';
 import 'package:shop_app/app/constants/colors/app_colors.dart';
 
-class CustomerLogInPage extends StatefulWidget {
-  const CustomerLogInPage({Key? key}) : super(key: key);
+class LogInPage extends StatefulWidget {
+  const LogInPage({Key? key}) : super(key: key);
 
   @override
   _CustomerLogInPageState createState() => _CustomerLogInPageState();
 }
 
-class _CustomerLogInPageState extends State<CustomerLogInPage> {
+class _CustomerLogInPageState extends State<LogInPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
@@ -213,7 +213,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                   processing == true
                       ? Center(
                           child: CircularProgressIndicator(
-                            color: AppColors.purple,
+                            color: AppColors.yellowShade700,
                           ),
                         )
                       : GestureDetector(
