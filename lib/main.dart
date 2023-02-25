@@ -6,6 +6,7 @@ import 'package:shop_app/app/customers/main_pages/customer/customer_page.dart';
 import 'package:shop_app/app/home_page.dart';
 import 'package:shop_app/app/suppliers/auth/suppliers_login.dart';
 import 'package:shop_app/app/suppliers/auth/suppliers_signup.dart';
+import 'package:shop_app/app/suppliers/main_pages/category/category_page.dart';
 
 import 'app/suppliers/suppliers_page.dart';
 import 'app/welcome_page/welcome_page.dart';
@@ -25,8 +26,9 @@ class ShopApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: UploadPage(),
       // home: SuppliersPage(),
+      home: CategoryPage(),
 
-      initialRoute: '/welcome_page',
+      // initialRoute: '/welcome_page',
       routes: {
         '/welcome_page': (context) => WelcomePage(),
         '/home_page': (context) => HomePage(),

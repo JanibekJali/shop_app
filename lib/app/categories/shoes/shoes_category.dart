@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/app/categories/sub_category_page/sub_category_page.dart';
 import 'package:shop_app/app/utilities/categ_list.dart';
 
-class MenCategory extends StatelessWidget {
-  const MenCategory({Key? key}) : super(key: key);
+class ShoesCategory extends StatelessWidget {
+  const ShoesCategory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +24,15 @@ class MenCategory extends StatelessWidget {
                     crossAxisSpacing: 15,
                     crossAxisCount: 2,
                     children:
-                        List.generate(CategoryListName.men.length, (index) {
+                        List.generate(CategoryListName.shoes.length, (index) {
                       return GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SubCategegoryPage(
-                                subCategName: CategoryListName.men[index],
-                                mainCategName: 'men',
+                                subCategName: CategoryListName.shoes[index],
+                                mainCategName: 'shoes',
                               ),
                               // subCategName: subCategName,
                               // mainCategName: mainCategName),
@@ -46,11 +46,11 @@ class MenCategory extends StatelessWidget {
                               width: 500,
                               child: Image(
                                 image: AssetImage(
-                                    'assets/images/men/men$index.jpg'),
+                                    'assets/images/shoes/shoes$index.jpg'),
                                 // image: AssetImage(assetName),
                               ),
                             ),
-                            Text(CategoryListName.men[index]),
+                            Text(CategoryListName.shoes[index]),
                             // Text(subCategLabel),
                           ],
                         ),

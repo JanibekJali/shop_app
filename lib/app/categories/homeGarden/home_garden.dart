@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/app/categories/sub_category_page/sub_category_page.dart';
 import 'package:shop_app/app/utilities/categ_list.dart';
 
-class MenCategory extends StatelessWidget {
-  const MenCategory({Key? key}) : super(key: key);
+class HomeGardanCategory extends StatelessWidget {
+  const HomeGardanCategory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,6 @@ class MenCategory extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.7,
             width: MediaQuery.of(context).size.width * 0.99,
             child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.7,
@@ -23,16 +22,17 @@ class MenCategory extends StatelessWidget {
                     mainAxisSpacing: 70,
                     crossAxisSpacing: 15,
                     crossAxisCount: 2,
-                    children:
-                        List.generate(CategoryListName.men.length, (index) {
+                    children: List.generate(
+                        CategoryListName.homeandgarden.length, (index) {
                       return GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SubCategegoryPage(
-                                subCategName: CategoryListName.men[index],
-                                mainCategName: 'men',
+                                subCategName:
+                                    CategoryListName.homeandgarden[index],
+                                mainCategName: 'homeandgarden',
                               ),
                               // subCategName: subCategName,
                               // mainCategName: mainCategName),
@@ -46,11 +46,11 @@ class MenCategory extends StatelessWidget {
                               width: 500,
                               child: Image(
                                 image: AssetImage(
-                                    'assets/images/men/men$index.jpg'),
+                                    'assets/images/homegarden/home$index.jpg'),
                                 // image: AssetImage(assetName),
                               ),
                             ),
-                            Text(CategoryListName.men[index]),
+                            Text(CategoryListName.homeandgarden[index]),
                             // Text(subCategLabel),
                           ],
                         ),

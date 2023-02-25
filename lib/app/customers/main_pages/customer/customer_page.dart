@@ -15,7 +15,7 @@ class _CustomerPageState extends State<CustomerPage> {
   int _selectedIndex = 0;
   final List<Widget> _tabs = [
     HomePage(),
-    Center(child: Text('Category Screen')),
+    Center(child: Text('Categ Screen')),
     Center(child: Text('Stores Screen')),
     Center(child: Text('Cart Screen')),
     ProfilePage(
