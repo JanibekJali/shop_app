@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/app/home_page.dart';
 import 'package:shop_app/app/suppliers/main_pages/dashboard_page.dart';
-import 'package:shop_app/app/suppliers/main_pages/upload_page.dart';
+import 'package:shop_app/app/suppliers/main_pages/upload/upload_page.dart';
 
 import 'main_pages/category/category_page.dart';
 

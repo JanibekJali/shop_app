@@ -22,15 +22,14 @@ class WomenCategory extends StatelessWidget {
                     mainAxisSpacing: 70,
                     crossAxisSpacing: 15,
                     crossAxisCount: 2,
-                    children:
-                        List.generate(CategoryListName.women.length, (index) {
+                    children: List.generate(women.length, (index) {
                       return GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SubCategegoryPage(
-                                subCategName: CategoryListName.women[index],
+                                subCategName: women[index],
                                 mainCategName: 'women',
                               ),
                               // subCategName: subCategName,
@@ -49,7 +48,7 @@ class WomenCategory extends StatelessWidget {
                                 // image: AssetImage(assetName),
                               ),
                             ),
-                            Text(CategoryListName.women[index]),
+                            Text(women[index]),
                             // Text(subCategLabel),
                           ],
                         ),

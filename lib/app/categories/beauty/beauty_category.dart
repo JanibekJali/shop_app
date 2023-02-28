@@ -22,15 +22,14 @@ class BeautyCategory extends StatelessWidget {
                     mainAxisSpacing: 70,
                     crossAxisSpacing: 15,
                     crossAxisCount: 2,
-                    children:
-                        List.generate(CategoryListName.beauty.length, (index) {
+                    children: List.generate(beauty.length, (index) {
                       return GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SubCategegoryPage(
-                                subCategName: CategoryListName.beauty[index],
+                                subCategName: beauty[index],
                                 mainCategName: 'beauty',
                               ),
                               // subCategName: subCategName,
@@ -49,7 +48,7 @@ class BeautyCategory extends StatelessWidget {
                                 // image: AssetImage(assetName),
                               ),
                             ),
-                            Text(CategoryListName.beauty[index]),
+                            Text(beauty[index]),
                             // Text(subCategLabel),
                           ],
                         ),

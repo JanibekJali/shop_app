@@ -141,6 +141,37 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
     }
   }
 
+  void enterAnonimously() async {
+    try {
+      await FirebaseAuth.instance.signInAnonymously().whenComplete(() async {
+        _uid = FirebaseAuth.instance.currentUser!.uid;
+        await customers.doc(_uid).set({
+          'name': '',
+          'email': '',
+          'profileImage': '',
+          'phone': '',
+          'address': '',
+          'cid': _uid,
+        });
+      });
+      ;
+      Navigator.pushReplacementNamed(context, '/customer_page');
+      SnackBarWidget.snackBar(
+          "Signed in with temporary account.", _scaffoldKey);
+    } on FirebaseAuthException catch (e) {
+      switch (e.code) {
+        case "operation-not-allowed":
+          SnackBarWidget.snackBar(
+              "Anonymous auth hasn't been enabled for this project.",
+              _scaffoldKey);
+
+          break;
+        default:
+          SnackBarWidget.snackBar("Unknown error.", _scaffoldKey);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ScaffoldMessenger(
@@ -392,7 +423,6 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                       Container(
                         color: AppColors.grey.withOpacity(0.7),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             // GoogleFacebookGuestWidget(title: 'Google', icon: Icons.google, onTap: (){}),
                             GoogleFacebookGuestWidget(
@@ -412,28 +442,15 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                             ),
 
                             GoogleFacebookGuestWidget(
-                                title: 'Guest',
-                                image: Image.asset(
-                                  'assets/images/inapp/person.png',
-                                  width: 35,
-                                ),
-                                onTap: () async {
-                                  try {
-                                    final userCredential = await FirebaseAuth
-                                        .instance
-                                        .signInAnonymously();
-                                    print("Signed in with temporary account.");
-                                  } on FirebaseAuthException catch (e) {
-                                    switch (e.code) {
-                                      case "operation-not-allowed":
-                                        print(
-                                            "Anonymous auth hasn't been enabled for this project.");
-                                        break;
-                                      default:
-                                        print("Unknown error.");
-                                    }
-                                  }
-                                }),
+                              title: 'Guest',
+                              image: Image.asset(
+                                'assets/images/inapp/person.png',
+                                width: 35,
+                              ),
+                              onTap: () {
+                                enterAnonimously();
+                              },
+                            ),
                           ],
                         ),
                       )

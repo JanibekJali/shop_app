@@ -23,15 +23,14 @@ class ShoesCategory extends StatelessWidget {
                     mainAxisSpacing: 70,
                     crossAxisSpacing: 15,
                     crossAxisCount: 2,
-                    children:
-                        List.generate(CategoryListName.shoes.length, (index) {
+                    children: List.generate(shoes.length, (index) {
                       return GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SubCategegoryPage(
-                                subCategName: CategoryListName.shoes[index],
+                                subCategName: shoes[index],
                                 mainCategName: 'shoes',
                               ),
                               // subCategName: subCategName,
@@ -50,7 +49,7 @@ class ShoesCategory extends StatelessWidget {
                                 // image: AssetImage(assetName),
                               ),
                             ),
-                            Text(CategoryListName.shoes[index]),
+                            Text(shoes[index]),
                             // Text(subCategLabel),
                           ],
                         ),

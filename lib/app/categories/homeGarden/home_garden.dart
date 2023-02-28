@@ -22,16 +22,14 @@ class HomeGardanCategory extends StatelessWidget {
                     mainAxisSpacing: 70,
                     crossAxisSpacing: 15,
                     crossAxisCount: 2,
-                    children: List.generate(
-                        CategoryListName.homeandgarden.length, (index) {
+                    children: List.generate(homeandgarden.length, (index) {
                       return GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SubCategegoryPage(
-                                subCategName:
-                                    CategoryListName.homeandgarden[index],
+                                subCategName: homeandgarden[index],
                                 mainCategName: 'homeandgarden',
                               ),
                               // subCategName: subCategName,
@@ -50,7 +48,7 @@ class HomeGardanCategory extends StatelessWidget {
                                 // image: AssetImage(assetName),
                               ),
                             ),
-                            Text(CategoryListName.homeandgarden[index]),
+                            Text(homeandgarden[index]),
                             // Text(subCategLabel),
                           ],
                         ),

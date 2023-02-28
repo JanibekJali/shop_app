@@ -90,18 +90,24 @@ class _ProfilePageState extends State<ProfilePage> {
                             padding: const EdgeInsets.only(top: 25, left: 30),
                             child: Row(
                               children: [
-                                CircleAvatar(
-                                  radius: 50,
-                                  backgroundImage:
-                                      NetworkImage(data['profileImage']),
-                                  // backgroundImage: AssetImage(
-                                  //     'assets/images/inapp/guest.jpg'),
-                                ),
+                                data['profileImage'] == ''
+                                    ? CircleAvatar(
+                                        radius: 50,
+                                        backgroundImage: AssetImage(
+                                            'assets/images/inapp/guest.jpg'),
+                                      )
+                                    : CircleAvatar(
+                                        radius: 50,
+                                        backgroundImage:
+                                            NetworkImage(data['profileImage']),
+                                      ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 25),
                                   child: Text(
                                     // 'Guest'.toUpperCase(),
-                                    data['name'].toUpperCase(),
+                                    data['name'] == ''
+                                        ? 'Guest'.toUpperCase()
+                                        : data['name'].toUpperCase(),
 
                                     style: TextStyle(
                                       fontSize: 24,
@@ -229,7 +235,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                       RepeatedListTile(
                                         title: 'Email Address',
                                         // subTitle: 'example@email.com',
-                                        subTitle: data['email'],
+                                        subTitle: data['email'] == ''
+                                            ? 'Anonimous email'
+                                            : data['email'],
                                         icon: Icons.email,
                                         // onPressed: () {},
                                       ),
@@ -237,14 +245,18 @@ class _ProfilePageState extends State<ProfilePage> {
                                       RepeatedListTile(
                                         title: 'Phone No.',
                                         // subTitle: 'Anonymous phone',
-                                        subTitle: data['phone'],
+                                        subTitle: data['phone'] == ' '
+                                            ? 'Anonum phone'
+                                            : data['phone'],
                                         icon: Icons.phone,
                                       ),
                                       YellowDivider(),
                                       RepeatedListTile(
                                         title: 'Address',
                                         // subTitle: 'Anonymous address ',
-                                        subTitle: data['address'],
+                                        subTitle: data['address'] == ' '
+                                            ? 'Anonum Address'
+                                            : data['address'],
                                         icon: Icons.location_pin,
                                         onPressed: () {},
                                       ),

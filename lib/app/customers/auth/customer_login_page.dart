@@ -36,16 +36,17 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
         Navigator.pushReplacementNamed(context, '/customer_page');
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
-          SnackBarWidget.snackBar(
-              'No user found for that email.', _scaffoldKey);
-          print('No user found for that email.');
-          setState(() {
+           setState(() {
             processing = false;
           });
+          SnackBarWidget.snackBar(
+              'No user found for that email.', _scaffoldKey);
+         
+         
         } else if (e.code == 'wrong-password') {
           SnackBarWidget.snackBar(
               'Wrong password provided for that user.', _scaffoldKey);
-          log('Wrong password provided for that user.');
+         
           setState(() {
             processing = false;
           });

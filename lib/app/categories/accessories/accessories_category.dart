@@ -22,16 +22,14 @@ class AccessoriesCategory extends StatelessWidget {
                     mainAxisSpacing: 70,
                     crossAxisSpacing: 15,
                     crossAxisCount: 2,
-                    children: List.generate(CategoryListName.accessories.length,
-                        (index) {
+                    children: List.generate(accessories.length, (index) {
                       return GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SubCategegoryPage(
-                                subCategName:
-                                    CategoryListName.accessories[index],
+                                subCategName: accessories[index],
                                 mainCategName: 'accessories',
                               ),
                               // subCategName: subCategName,
@@ -50,7 +48,7 @@ class AccessoriesCategory extends StatelessWidget {
                                 // image: AssetImage(assetName),
                               ),
                             ),
-                            Text(CategoryListName.accessories[index]),
+                            Text(accessories[index]),
                             // Text(subCategLabel),
                           ],
                         ),

@@ -20,32 +20,20 @@ class KidsCategory extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Text(
-                      'kids',
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.5,
-                      ),
-                    ),
-                  ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.67,
                     child: GridView.count(
                       mainAxisSpacing: 70,
                       crossAxisSpacing: 15,
                       crossAxisCount: 2,
-                      children:
-                          List.generate(CategoryListName.kids.length, (index) {
+                      children: List.generate(kids.length, (index) {
                         return GestureDetector(
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => SubCategegoryPage(
-                                  subCategName: CategoryListName.kids[index],
+                                  subCategName: kids[index],
                                   mainCategName: 'kids',
                                 ),
                                 // subCategName: subCategName,
@@ -65,7 +53,7 @@ class KidsCategory extends StatelessWidget {
                                   // image: AssetImage(assetName),
                                 ),
                               ),
-                              Text(CategoryListName.kids[index]),
+                              Text(kids[index]),
                               // Text(subCategLabel),
                             ],
                           ),
