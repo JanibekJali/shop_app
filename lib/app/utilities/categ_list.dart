@@ -12,6 +12,7 @@ const List<String> maincateg = [
 ];
 
 const List<String> men = [
+  'subcategory',
   'shirt',
   't-shirt',
   'jacket',
@@ -23,6 +24,7 @@ const List<String> men = [
   'other',
 ];
 const List<String> women = [
+  'subcategory',
   'dress',
   '2pcs sets',
   't-shirt',
@@ -35,6 +37,7 @@ const List<String> women = [
   'other'
 ];
 const List<String> electronics = [
+  'subcategory',
   'phone',
   'computer',
   'laptop',
@@ -52,6 +55,7 @@ const List<String> electronics = [
 ];
 
 const List<String> shoes = [
+  'subcategory',
   'men slippers',
   'men classic',
   'men casual',
@@ -69,6 +73,7 @@ const List<String> shoes = [
 ];
 
 const List<String> homeandgarden = [
+  'subcategory',
   'living room',
   'bed room',
   'dinning room',
@@ -82,6 +87,7 @@ const List<String> homeandgarden = [
 ];
 
 const List<String> beauty = [
+  'subcategory',
   'body care',
   'hair care',
   'men perfume',
@@ -91,6 +97,7 @@ const List<String> beauty = [
 ];
 
 const List<String> accessories = [
+  'subcategory',
   'hat',
   'men sunglass',
   'w sunglass',
@@ -105,6 +112,7 @@ const List<String> accessories = [
 ];
 
 const List<String> kids = [
+  'subcategory',
   'girls sets',
   'girls dress',
   'girls top',
@@ -121,6 +129,7 @@ const List<String> kids = [
 ];
 
 const List<String> bags = [
+  'subcategory',
   'wallet',
   'clutch',
   'chest bag',
