@@ -27,8 +27,8 @@ class ShopApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: UploadPage(),
       // home: SuppliersPage(),
-      home: UploadPage(),
-
+      // home: UploadPage(),
+      home: HomePage(),
       // initialRoute: '/welcome_page',
       routes: {
         '/welcome_page': (context) => WelcomePage(),

@@ -1,9 +1,10 @@
 import 'dart:developer';
-import 'dart:ffi';
+// import 'dart:ffi';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -44,9 +45,9 @@ class _UploadPageState extends State<UploadPage> {
       if (_formKey.currentState!.validate()) {
         _formKey.currentState!.save();
         if (imagesFileList.isNotEmpty) {
-          // setState(() {
-          //   processing = true;
-          // });
+          setState(() {
+            processing = true;
+          });
           try {
             for (var image in imagesFileList) {
               Reference ref = FirebaseStorage.instance
@@ -91,11 +92,22 @@ class _UploadPageState extends State<UploadPage> {
       'quantity': quantity,
       'productName': productName,
       'productDescription': productDescription,
+      'productImages': imagesUrlList,
+      'sId': FirebaseAuth.instance.currentUser!.uid,
+      'discount': 0,
     });
   }
 
   void uploadProduct() async {
     await uploadImages().whenComplete(() => uploadData());
+    imagesFileList = [];
+    mainCategValue = 'select category';
+
+    subCategValue = 'subcategory';
+    _formKey.currentState!.reset();
+    setState(() {
+      processing = false;
+    });
   }
 
   @override
@@ -260,10 +272,14 @@ class _UploadPageState extends State<UploadPage> {
               FloatingActionButton(
                 backgroundColor: Colors.yellow,
                 onPressed: uploadProduct,
-                child: Icon(
-                  Icons.upload,
-                  color: Colors.black,
-                ),
+                child: processing == true
+                    ? CircularProgressIndicator(
+                        color: Colors.black,
+                      )
+                    : Icon(
+                        Icons.upload,
+                        color: Colors.black,
+                      ),
               ),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/app/suppliers/galleries/men_gallery.dart';
 import 'package:shop_app/app/widgets/app_bar/search_widget.dart';
 import 'package:shop_app/app/widgets/tab_bar_widgets/repeated_tab_bar_widget.dart';
 
@@ -36,7 +37,7 @@ class _HomePageState extends State<HomePage> {
               ],
             )),
         body: TabBarView(children: [
-          Center(child: Text('men screen')),
+          MenGallery(),
           Center(child: Text('women screen')),
           Center(child: Text('Accessories screen')),
           Center(child: Text('Shoes screen')),
