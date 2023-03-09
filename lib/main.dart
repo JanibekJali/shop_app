@@ -28,8 +28,8 @@ class ShopApp extends StatelessWidget {
       // home: UploadPage(),
       // home: SuppliersPage(),
       // home: UploadPage(),
-      home: HomePage(),
-      // initialRoute: '/welcome_page',
+      // home: HomePage(),
+      initialRoute: '/welcome_page',
       routes: {
         '/welcome_page': (context) => WelcomePage(),
         '/home_page': (context) => HomePage(),

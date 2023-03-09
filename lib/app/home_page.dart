@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/app/suppliers/galleries/electronics_gallery.dart';
 import 'package:shop_app/app/suppliers/galleries/men_gallery.dart';
 import 'package:shop_app/app/widgets/app_bar/search_widget.dart';
 import 'package:shop_app/app/widgets/tab_bar_widgets/repeated_tab_bar_widget.dart';
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> {
     return DefaultTabController(
       length: 9,
       child: Scaffold(
+        backgroundColor: Colors.grey.shade300,
         appBar: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: Colors.white,
@@ -44,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           Center(child: Text('Bags screen')),
           Center(child: Text('Kids screen')),
           Center(child: Text('home & garden screen')),
-          Center(child: Text('Electronics screen')),
+          ElectronisGallery(),
           Center(child: Text('beauty screen')),
         ]),
       ),

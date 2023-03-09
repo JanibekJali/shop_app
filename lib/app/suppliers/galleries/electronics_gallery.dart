@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 
-class MenGallery extends StatefulWidget {
-  const MenGallery({Key? key}) : super(key: key);
+class ElectronisGallery extends StatefulWidget {
+  const ElectronisGallery({Key? key}) : super(key: key);
 
   @override
-  _MenGalleryState createState() => _MenGalleryState();
+  _ElectronisGalleryState createState() => _ElectronisGalleryState();
 }
 
-class _MenGalleryState extends State<MenGallery> {
+class _ElectronisGalleryState extends State<ElectronisGallery> {
   final Stream<QuerySnapshot> _productStream =
       FirebaseFirestore.instance.collection('products').snapshots();
   @override

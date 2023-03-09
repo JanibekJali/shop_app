@@ -24,6 +24,8 @@ dependencies:
   firebase_storage: ^11.0.10
   cloud_firestore: ^4.3.1
   uuid: ^3.0.7
+  #Grid
+  staggered_grid_view_flutter: ^0.0.4
 
 dev_dependencies:
   flutter_test:
