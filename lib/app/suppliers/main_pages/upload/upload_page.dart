@@ -1,10 +1,7 @@
 import 'dart:developer';
-// import 'dart:ffi';
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -28,15 +25,14 @@ class _UploadPageState extends State<UploadPage> {
   int? quantity;
   String? productName;
   String? productDescription;
-
+  String? productId;
+  bool processing = false;
   List<String> subCategList = [];
   final ImagePicker _picker = ImagePicker();
 
-  XFile? _imageFile;
   List<XFile> imagesFileList = [];
   List<String> imagesUrlList = [];
   dynamic _pickedImageError;
-  bool processing = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
@@ -82,31 +78,35 @@ class _UploadPageState extends State<UploadPage> {
   }
 
   void uploadData() async {
-    CollectionReference products =
-        FirebaseFirestore.instance.collection('products');
-    var uid = Uuid().v4();
-    await products.doc(uid).set({
-      'maincategoryValue': mainCategValue,
-      'subcategoryValue': subCategValue,
-      'price': price,
-      'quantity': quantity,
-      'productName': productName,
-      'productDescription': productDescription,
-      'productImages': imagesUrlList,
-      'sId': FirebaseAuth.instance.currentUser!.uid,
-      'discount': 0,
-    });
+    if (imagesUrlList.isNotEmpty) {
+      CollectionReference products =
+          FirebaseFirestore.instance.collection('products');
+      var uid = Uuid().v4();
+      await products.doc(uid).set({
+        'productId': productId,
+        'maincategoryValue': mainCategValue,
+        'subcategoryValue': subCategValue,
+        'price': price,
+        'quantity': quantity,
+        'productName': productName,
+        'productDescription': productDescription,
+        'productImages': imagesUrlList,
+        'sId': FirebaseAuth.instance.currentUser!.uid,
+        'discount': 0,
+      });
+    }
   }
 
   void uploadProduct() async {
-    await uploadImages().whenComplete(() => uploadData());
-    imagesFileList = [];
-    mainCategValue = 'select category';
+    await uploadImages().whenComplete(() => uploadData()).whenComplete(() {
+      imagesFileList = [];
+      mainCategValue = 'select category';
 
-    subCategValue = 'subcategory';
-    _formKey.currentState!.reset();
-    setState(() {
-      processing = false;
+      subCategValue = 'subcategory';
+      _formKey.currentState!.reset();
+      setState(() {
+        processing = false;
+      });
     });
   }
 
@@ -288,65 +288,6 @@ class _UploadPageState extends State<UploadPage> {
     );
   }
 
-  /* Widget coverImages() {
-    if (imagesFileList.isNotEmpty) {
-      return GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-          ),
-          itemCount: imagesFileList.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                color: Colors.amber,
-                child: Center(
-                  child: Image.file(
-                    File(imagesFileList[index].path),
-                  ),
-                ),
-              ),
-            );
-          });
-    } else {
-      return GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 1,
-          ),
-          itemCount: 30,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: () {
-                  pickMultipleImages();
-                },
-                child: Container(
-                  color: Colors.amber,
-                  child: Center(child: Icon(Icons.photo)
-                      //      Image.file(
-                      //   File(imagesFileList[index].path),
-                      // ),
-                      ),
-                ),
-              ),
-            );
-          });
-
-      // Center(
-      //   child: Text(
-      //     ' you have not \n \n picked images yet !',
-      //     textAlign: TextAlign.center,
-      //     style: TextStyle(
-      //       fontSize: 16,
-      //     ),
-      //   ),
-      // );
-    }
-  }
-
-  */
-
   Widget coverImages() {
     if (imagesFileList.isNotEmpty) {
       return ListView.builder(
@@ -361,9 +302,7 @@ class _UploadPageState extends State<UploadPage> {
         child: Text(
           ' you have not \n \n picked images yet !',
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 16,
-          ),
+          style: TextStyle(fontSize: 16, color: Colors.black),
         ),
       );
     }

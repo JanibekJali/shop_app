@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/app/suppliers/galleries/electronics_gallery.dart';
-import 'package:shop_app/app/suppliers/galleries/men_gallery.dart';
 import 'package:shop_app/app/widgets/app_bar/search_widget.dart';
 import 'package:shop_app/app/widgets/tab_bar_widgets/repeated_tab_bar_widget.dart';
+
+import 'suppliers/galleries/page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -40,14 +40,14 @@ class _HomePageState extends State<HomePage> {
             )),
         body: TabBarView(children: [
           MenGallery(),
-          Center(child: Text('women screen')),
-          Center(child: Text('Accessories screen')),
-          Center(child: Text('Shoes screen')),
-          Center(child: Text('Bags screen')),
-          Center(child: Text('Kids screen')),
-          Center(child: Text('home & garden screen')),
+          WomenGallery(),
+          AccessoriesGallery(),
+          ShoesGallery(),
+          BagsGallery(),
+          KidsGallery(),
+          HomeGardenGallery(),
           ElectronisGallery(),
-          Center(child: Text('beauty screen')),
+          BeautyGallery(),
         ]),
       ),
     );

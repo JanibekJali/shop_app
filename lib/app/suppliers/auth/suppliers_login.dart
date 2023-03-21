@@ -33,22 +33,23 @@ class _SuppliersLogInState extends State<SuppliersLogIn> {
           email: _email!,
           password: _password!,
         );
+        _formKey.currentState!.reset();
         Navigator.pushReplacementNamed(context, '/suppliers_page');
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
+          setState(() {
+            processing = false;
+          });
           SnackBarWidget.snackBar(
               'No user found for that email.', _scaffoldKey);
           print('No user found for that email.');
+        } else if (e.code == 'wrong-password') {
           setState(() {
             processing = false;
           });
-        } else if (e.code == 'wrong-password') {
           SnackBarWidget.snackBar(
               'Wrong password provided for that user.', _scaffoldKey);
           log('Wrong password provided for that user.');
-          setState(() {
-            processing = false;
-          });
         }
       }
     } else {

@@ -25,196 +25,201 @@ class _WelcomePageState extends State<WelcomePage> {
         ),
         constraints: BoxConstraints.expand(),
         child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ColorizeAnimationWidget(),
-              SizedBox(
-                height: 120,
-                child: Image(
-                  image: AssetImage('assets/images/inapp/logotip.png'),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomLeft: Radius.circular(30),
-                          ),
-                          color: AppColors.grey.withOpacity(0.7),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            'Suppliers only',
-                            style: TextStyle(
-                                color: AppColors.yellow,
-                                fontSize: 30,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 6,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomLeft: Radius.circular(30),
-                          ),
-                          color: AppColors.grey.withOpacity(0.7),
-                        ),
-                        child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                SizedBox(
-                                  height: 45,
-                                  child: Image(
-                                    image: AssetImage(
-                                        'assets/images/inapp/kurirr.png'),
-                                  ),
-                                ),
-                                LogSignWidget(
-                                    title: 'Log In',
-                                    onTap: () {
-                                      Navigator.pushReplacementNamed(
-                                          context, '/suppliers_login');
-                                    }),
-                                LogSignWidget(
-                                    title: 'Sign Up',
-                                    onTap: () {
-                                      Navigator.pushReplacementNamed(
-                                          context, '/suppliers_signup');
-                                    }),
-                              ],
-                            )),
-                      ),
-                    ],
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ColorizeAnimationWidget(),
+                SizedBox(
+                  height: 120,
+                  child: Image(
+                    image: AssetImage('assets/images/inapp/logotip.png'),
                   ),
-                ],
-              ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(30),
-                              bottomRight: Radius.circular(30),
+                              topLeft: Radius.circular(30),
+                              bottomLeft: Radius.circular(30),
                             ),
-                            color: AppColors.grey),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            'Cutomers',
-                            style: TextStyle(
-                                color: AppColors.yellow,
-                                fontSize: 30,
-                                fontWeight: FontWeight.w600),
+                            color: AppColors.grey.withOpacity(0.7),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              'Suppliers only',
+                              style: TextStyle(
+                                  color: AppColors.yellow,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w600),
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 6,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          right: 86,
-                          bottom: 100,
+                        SizedBox(
+                          height: 6,
                         ),
-                        child: Container(
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(30),
+                              bottomLeft: Radius.circular(30),
+                            ),
+                            color: AppColors.grey.withOpacity(0.7),
+                          ),
+                          child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  SizedBox(
+                                    height: 45,
+                                    child: Image(
+                                      image: AssetImage(
+                                          'assets/images/inapp/kurirr.png'),
+                                    ),
+                                  ),
+                                  LogSignWidget(
+                                      title: 'Log In',
+                                      onTap: () {
+                                        Navigator.pushReplacementNamed(
+                                            context, '/suppliers_login');
+                                      }),
+                                  LogSignWidget(
+                                      title: 'Sign Up',
+                                      onTap: () {
+                                        Navigator.pushReplacementNamed(
+                                            context, '/suppliers_signup');
+                                      }),
+                                ],
+                              )),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
                                 topRight: Radius.circular(30),
                                 bottomRight: Radius.circular(30),
                               ),
-                              color: AppColors.greyShade100),
+                              color: AppColors.grey),
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                LogSignWidget(
-                                  title: 'Sign In',
-                                  onTap: () {
-                                    Navigator.pushReplacementNamed(
-                                        context, '/customer_login_page');
-                                  },
-                                ),
-                                LogSignWidget(
-                                  onTap: () {
-                                    Navigator.pushReplacementNamed(
-                                        context, '/customer_signup_page');
-                                  },
-                                  title: 'Sing Up ',
-                                ),
-                                Image.asset(
-                                  'assets/images/inapp/users.png',
-                                  height: 50,
-                                  // width: 8,
-                                ),
-                              ],
+                            child: Text(
+                              'Cutomers',
+                              style: TextStyle(
+                                  color: AppColors.yellow,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              // Container(
-              //   color: AppColors.grey.withOpacity(0.7),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //     children: [
-              //       // GoogleFacebookGuestWidget(title: 'Google', icon: Icons.google, onTap: (){}),
-              //       GoogleFacebookGuestWidget(
-              //           title: 'Google',
-              //           color: Color(0xff3F5123),
-              //           icon: Icons.laptop_chromebook_sharp,
-              //           onTap: () {}),
-              //       GoogleFacebookGuestWidget(
-              //           title: 'Facebook',
-              //           color: Color(0xff3F5798),
-              //           icon: Icons.facebook,
-              //           onTap: () {}),
-              //       GoogleFacebookGuestWidget(
-              //           title: 'Guest',
-              //           color: Color(0xff3DC5FB),
-              //           icon: Icons.person,
-              //           onTap: () async {
-              //             try {
-              //               final userCredential =
-              //                   await FirebaseAuth.instance.signInAnonymously();
-              //               print("Signed in with temporary account.");
-              //             } on FirebaseAuthException catch (e) {
-              //               switch (e.code) {
-              //                 case "operation-not-allowed":
-              //                   print(
-              //                       "Anonymous auth hasn't been enabled for this project.");
-              //                   break;
-              //                 default:
-              //                   print("Unknown error.");
-              //               }
-              //             }
-              //           }),
-              //     ],
-              //   ),
-              // )
-            ],
+                        SizedBox(
+                          height: 6,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            right: 86,
+                            bottom: 100,
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(30),
+                                  bottomRight: Radius.circular(30),
+                                ),
+                                color: AppColors.greyShade100),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  LogSignWidget(
+                                    title: 'Sign In',
+                                    onTap: () {
+                                      Navigator.pushReplacementNamed(
+                                          context, '/customer_login_page');
+                                    },
+                                  ),
+                                  LogSignWidget(
+                                    onTap: () {
+                                      Navigator.pushReplacementNamed(
+                                          context, '/customer_signup_page');
+                                    },
+                                    title: 'Sing Up ',
+                                  ),
+                                  Image.asset(
+                                    'assets/images/inapp/users.png',
+                                    height: 50,
+                                    // width: 8,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                // Container(
+                //   color: AppColors.grey.withOpacity(0.7),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //     children: [
+                //       // GoogleFacebookGuestWidget(title: 'Google', icon: Icons.google, onTap: (){}),
+                //       GoogleFacebookGuestWidget(
+                //           title: 'Google',
+                //           color: Color(0xff3F5123),
+                //           icon: Icons.laptop_chromebook_sharp,
+                //           onTap: () {}),
+                //       GoogleFacebookGuestWidget(
+                //           title: 'Facebook',
+                //           color: Color(0xff3F5798),
+                //           icon: Icons.facebook,
+                //           onTap: () {}),
+                //       GoogleFacebookGuestWidget(
+                //           title: 'Guest',
+                //           color: Color(0xff3DC5FB),
+                //           icon: Icons.person,
+                //           onTap: () async {
+                //             try {
+                //               final userCredential =
+                //                   await FirebaseAuth.instance.signInAnonymously();
+                //               print("Signed in with temporary account.");
+                //             } on FirebaseAuthException catch (e) {
+                //               switch (e.code) {
+                //                 case "operation-not-allowed":
+                //                   print(
+                //                       "Anonymous auth hasn't been enabled for this project.");
+                //                   break;
+                //                 default:
+                //                   print("Unknown error.");
+                //               }
+                //             }
+                //           }),
+                //     ],
+                //   ),
+                // )
+              ],
+            ),
           ),
         ),
       ),

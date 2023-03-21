@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/app/suppliers/galleries/widgets/product_model_widget.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 
@@ -11,8 +12,10 @@ class ElectronisGallery extends StatefulWidget {
 }
 
 class _ElectronisGalleryState extends State<ElectronisGallery> {
-  final Stream<QuerySnapshot> _productStream =
-      FirebaseFirestore.instance.collection('products').snapshots();
+  final Stream<QuerySnapshot> _productStream = FirebaseFirestore.instance
+      .collection('products')
+      .where('maincategoryValue', isEqualTo: 'electronics')
+      .snapshots();
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -28,6 +31,22 @@ class _ElectronisGalleryState extends State<ElectronisGallery> {
           );
         }
 
+        if (snapshot.data!.docs.isEmpty) {
+          return Center(
+            child: Text(
+              'This category \n\n has no items yet  !',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 26,
+                color: Colors.blueGrey,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Acme',
+                letterSpacing: 1.5,
+              ),
+            ),
+          );
+        }
+
         return Padding(
           padding: const EdgeInsets.all(10.0),
           child: StaggeredGridView.countBuilder(
@@ -36,53 +55,8 @@ class _ElectronisGalleryState extends State<ElectronisGallery> {
               crossAxisSpacing: 30,
               crossAxisCount: 2,
               itemBuilder: (context, index) {
-                return Container(
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Column(children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15),
-                      ),
-                      child: Container(
-                        color: Colors.white,
-                        height: 250,
-                        width: 200,
-                        child: Image.network(
-                          snapshot.data!.docs[index]['productImages'][0],
-                        ),
-                      ),
-                    ),
-                    Text(
-                      snapshot.data!.docs[index]['productDescription'],
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          snapshot.data!.docs[index]['price'].toString() +
-                              ('\$ '),
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.favorite_border_outlined,
-                            color: Colors.red,
-                            size: 25,
-                          ),
-                        ),
-                      ],
-                    )
-                  ]),
+                return ProductModelWidget(
+                  product: snapshot.data!.docs[index],
                 );
               },
               staggeredTileBuilder: (context) => StaggeredTile.fit(1)),

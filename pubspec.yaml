@@ -26,6 +26,8 @@ dependencies:
   uuid: ^3.0.7
   #Grid
   staggered_grid_view_flutter: ^0.0.4
+  shimmer: ^2.0.0
+  fancy_shimmer_image: ^2.0.2
 
 dev_dependencies:
   flutter_test:

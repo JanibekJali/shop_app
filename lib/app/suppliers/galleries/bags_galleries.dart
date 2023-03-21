@@ -1,21 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:shop_app/app/suppliers/galleries/widgets/product_model_widget.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 
-class MenGallery extends StatefulWidget {
-  const MenGallery({Key? key}) : super(key: key);
+class BagsGallery extends StatefulWidget {
+  const BagsGallery({Key? key}) : super(key: key);
 
   @override
-  _MenGalleryState createState() => _MenGalleryState();
+  _BagsGalleryState createState() => _BagsGalleryState();
 }
 
-class _MenGalleryState extends State<MenGallery> {
+class _BagsGalleryState extends State<BagsGallery> {
   final Stream<QuerySnapshot> _productStream = FirebaseFirestore.instance
       .collection('products')
-      .where('maincategoryValue', isEqualTo: 'men')
+      .where('maincategoryValue', isEqualTo: 'bags')
       .snapshots();
   @override
   Widget build(BuildContext context) {
@@ -47,6 +46,7 @@ class _MenGalleryState extends State<MenGallery> {
             ),
           );
         }
+
         return Padding(
           padding: const EdgeInsets.all(10.0),
           child: StaggeredGridView.countBuilder(
@@ -55,19 +55,9 @@ class _MenGalleryState extends State<MenGallery> {
               crossAxisSpacing: 30,
               crossAxisCount: 2,
               itemBuilder: (context, index) {
-                if (snapshot.hasData == ConnectionState.done) {
-                  return ProductModelWidget(
-                    product: snapshot.data!.docs[index],
-                  );
-                } else
-                  return Shimmer.fromColors(
-                    baseColor: Colors.grey.shade300,
-                    highlightColor: Colors.grey.shade400,
-                    child: Container(
-                      height: 300,
-                      color: Colors.grey.shade300,
-                    ),
-                  );
+                return ProductModelWidget(
+                  product: snapshot.data!.docs[index],
+                );
               },
               staggeredTileBuilder: (context) => StaggeredTile.fit(1)),
         );
