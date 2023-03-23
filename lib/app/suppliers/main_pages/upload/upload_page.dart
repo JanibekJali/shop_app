@@ -127,9 +127,9 @@ class _UploadPageState extends State<UploadPage> {
                   Row(
                     children: [
                       Container(
-                        height: size.height * 0.30,
+                        height: size.height * 0.25,
                         width: size.width * 0.5,
-                        color: Colors.grey.shade600,
+                        // color: Colors.grey.shade300,
                         child: coverImages(),
                       ),
                       Column(
@@ -259,13 +259,23 @@ class _UploadPageState extends State<UploadPage> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               FloatingActionButton(
-                backgroundColor: Colors.yellow,
-                onPressed: pickMultipleImages,
-                child: Icon(
-                  Icons.photo_library,
-                  color: Colors.black,
-                ),
-              ),
+                  backgroundColor: Colors.yellow,
+                  onPressed: pickMultipleImages,
+                  child: imagesFileList.isEmpty
+                      ? Icon(
+                          Icons.photo_library,
+                          color: Colors.black,
+                        )
+                      : InkWell(
+                          onTap: () {
+                            imagesFileList = [];
+                            setState(() {});
+                          },
+                          child: Icon(
+                            Icons.delete,
+                            color: Colors.black,
+                          ),
+                        )),
               SizedBox(
                 width: 10,
               ),
@@ -295,6 +305,7 @@ class _UploadPageState extends State<UploadPage> {
           itemBuilder: (context, index) {
             return Image.file(
               File(imagesFileList[index].path),
+              fit: BoxFit.cover,
             );
           });
     } else {
@@ -311,8 +322,8 @@ class _UploadPageState extends State<UploadPage> {
   void pickMultipleImages() async {
     try {
       final _pickedImage = await _picker.pickMultiImage(
-        maxHeight: 300,
-        maxWidth: 300,
+        maxHeight: 200,
+        maxWidth: 200,
         imageQuality: 95,
       );
 

@@ -1,6 +1,6 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
+
 import 'package:shop_app/app/suppliers/galleries/detail_gallery/product_detail_page.dart';
 
 class ProductModelWidget extends StatelessWidget {
@@ -13,7 +13,7 @@ class ProductModelWidget extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ProductDetailPage(),
+            builder: (context) => ProductDetailPage(productList: product),
           ),
         );
       },

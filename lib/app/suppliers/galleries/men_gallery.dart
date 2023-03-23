@@ -56,10 +56,6 @@ class _MenGalleryState extends State<MenGallery> {
               crossAxisCount: 2,
               itemBuilder: (context, index) {
                 if (snapshot.hasData == ConnectionState.done) {
-                  return ProductModelWidget(
-                    product: snapshot.data!.docs[index],
-                  );
-                } else
                   return Shimmer.fromColors(
                     baseColor: Colors.grey.shade300,
                     highlightColor: Colors.grey.shade400,
@@ -68,6 +64,19 @@ class _MenGalleryState extends State<MenGallery> {
                       color: Colors.grey.shade300,
                     ),
                   );
+                }
+                return ProductModelWidget(
+                  product: snapshot.data!.docs[index],
+                );
+
+                // Shimmer.fromColors(
+                //   baseColor: Colors.grey.shade300,
+                //   highlightColor: Colors.grey.shade400,
+                //   child: Container(
+                //     height: 300,
+                //     color: Colors.grey.shade300,
+                //   ),
+                // );
               },
               staggeredTileBuilder: (context) => StaggeredTile.fit(1)),
         );

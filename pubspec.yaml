@@ -28,6 +28,7 @@ dependencies:
   staggered_grid_view_flutter: ^0.0.4
   shimmer: ^2.0.0
   fancy_shimmer_image: ^2.0.2
+  flutter_swiper_null_safety: ^1.0.2
 
 dev_dependencies:
   flutter_test:
